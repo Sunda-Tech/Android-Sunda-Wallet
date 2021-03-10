@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ViewWalletActivity">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:visibility="visible"
+        app:cardBackgroundColor="@color/blue_800"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="@drawable/world_map"
+            android:foregroundGravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/_4sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtWallet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_weight="1"
+                    android:fontFamily="monospace"
+                    android:text="NUX-1234-1234-1234-12345"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_14ssp" />
+
+                <ImageView
+                    android:id="@+id/card_logo"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/nux_logo"
+                    app:tint="@android:color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/txtWalletName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text="Nama Kartu"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/txtWalletNote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:text="catatan catatan catatan catatan catatan catatan catatan catatan catatan catatan "
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/grey_10" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/spacing_middle" />
+
+                <TextView
+                    android:id="@+id/txtBalance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="monospace"
+                    android:text="1234567890.12345678"
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                    android:textColor="@android:color/white" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="SEND COIN"
+            android:theme="@style/Button.Accent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnBarcode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="BARCODE"
+            android:theme="@style/Button.Accent" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listTransaksi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:itemCount="10"
+        tools:listitem="@layout/item_transaction">
+
+    </androidx.recyclerview.widget.RecyclerView>
+</LinearLayout>

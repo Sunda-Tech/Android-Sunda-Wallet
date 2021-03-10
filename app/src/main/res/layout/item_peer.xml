@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardServer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="@dimen/_4sdp">
+
+    <TextView
+        android:id="@+id/txtServer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="https://coin.ibnux.net"
+        android:textSize="@dimen/_16ssp"
+        android:textStyle="bold" />
+</androidx.cardview.widget.CardView>

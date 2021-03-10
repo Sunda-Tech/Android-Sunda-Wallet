@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Sunda Wallet</string>
+
+    <string name="app_intro_title_1">Apa itu cryptocurrency?</string>
+    <string name="app_intro_description_1">Cryptocurrency (mata uang crypto) adalah sebuah mata uang digital atau virtual yang dirancang sebagai alat tukar. Cryptocurrency menggunakan sistem kriptografi untuk mengamankan dan memverifikasi setiap transaksi. Semua transaksi disimpan di BlockchainCryptocurrency (mata uang crypto) adalah sebuah mata uang digital atau virtual yang dirancang sebagai alat tukar. Cryptocurrency menggunakan sistem kriptografi untuk mengamankan dan memverifikasi setiap transaksi. Semua transaksi disimpan di Blockchain</string>
+    <string name="app_intro_title_2">Apa itu BlockChain?</string>
+    <string name="app_intro_description_2">Blockchain adalah sistem database dengan data yang berisi info dari data sebelumnya, sehingga data akan berurut dan mudah divalidasi jika ada perubahan. data bersifat permanen</string>
+    <string name="app_intro_title_3">Apa itu alamat dompet?</string>
+    <string name="app_intro_description_3">Alamat Dompet seperti nomor rekening, sebagai alamat penerima transaksi</string>
+    <string name="app_intro_title_4">Apa itu Public key?</string>
+    <string name="app_intro_description_4">public key merupakan kunci kriptografi yang bisa anda bagikan ke orang lain, digunakan untuk enkripsi data digital, dan bisa dibuka dengan Private key</string>
+    <string name="app_intro_title_5">Apa itu Private key?</string>
+    <string name="app_intro_description_5">Private key merupakan kunci kriptografi yang rahasia, hanya anda yang boleh tahu, tidak boleh dibagikan, digunakan untuk membuka data hasil enkripsi dari Public key yang anda bagikan</string>
+    <string name="app_intro_title_6">Apa itu Passphrase?</string>
+    <string name="app_intro_description_6">Passphrase pada Cryptocurrency disini merupakan Private key, dan tidak boleh anda bagikan ke orang lain, RAHASIA, atau uang anda di dompet cryptocurrency bisa dicuri</string>
+    <string name="app_intro_title_7">Apa itu Biaya transfer (Fee)?</string>
+    <string name="app_intro_description_7">Biaya Transfer akan diberikan kepada pencatat Blockchain sebagai upah untuk mencatat ke Blockchain, biasa disebut Miner, penambang bitcoin.</string>
+    <string name="app_intro_title_8">Apa itu Sunda Coin?</string>
+    <string name="app_intro_description_8">Sunda Coin merupakan Cryptocurrency yang dibuat oleh Komunitas Sunda Sunday dari source code Cryptocurrency NXT</string>
+    <string name="app_intro_title_9">Apakah Sunda Coin bernilai?</string>
+    <string name="app_intro_description_9">Sunda Coin bisa bernilai, bisa tidak, tergantung kepercayaan penggunanya, dan apakah sering digunakan sehari hari, saat ini Sunda Coin hanya untuk belajar Cryptocurrency</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:visibility="visible"
+        app:cardBackgroundColor="@color/blue_500"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="3dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_170sdp"
+                android:scaleType="fitXY"
+                android:src="@drawable/world_map"
+                app:srcCompat="@drawable/world_map" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_mlarge">
+
+                <ImageView
+                    android:id="@+id/card_logo"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_gravity="end|right"
+                    app:tint="@android:color/white"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/nux_logo" />
+
+                <TextView
+                    android:id="@+id/txtWallet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:fontFamily="monospace"
+                    android:text="NUX-1234-1234-1234-1234"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_16ssp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/spacing_middle" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Balance"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                            android:textColor="@color/grey_10" />
+
+                        <TextView
+                            android:id="@+id/txtBalance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:fontFamily="monospace"
+                            android:text="1234567890.12345678"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                            android:textColor="@android:color/white" />
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/spacing_middle" />
+
+                <TextView
+                    android:id="@+id/txtWalletName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text="Nama Kartu"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textColor="@android:color/white" />
+                <TextView
+                    android:id="@+id/txtWalletNote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="catatan catatan catatan catatan catatan catatan catatan catatan catatan catatan "
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/grey_10" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

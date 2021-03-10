@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_nav_search"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="Search"
+        app:showAsAction="ifRoom" />
+
+
+    <item
+        android:id="@+id/menu_nav_backup"
+        android:title="Backup" />
+
+    <item
+        android:id="@+id/menu_nav_restore"
+        android:title="Restore" />
+
+    <item
+        android:id="@+id/menu_nav_changepin"
+        android:title="Change Pin" />
+    <item
+        android:id="@+id/menu_nav_peers"
+        android:title="Peers" />
+    <item
+        android:id="@+id/menu_nav_txListener"
+        android:title="Transaction Listener" />
+    <item
+        android:id="@+id/menu_nav_airdrop"
+        android:title="Send Air Drop" />
+    <item
+        android:id="@+id/menu_nav_faq"
+        android:title="FAQ" />
+
+    <item
+        android:id="@+id/menu_nav_update"
+        android:title="Check for update" />
+</menu>

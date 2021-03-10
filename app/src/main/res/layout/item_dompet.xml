@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout1"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:cardBackgroundColor="@color/blue_500"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="2dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue_900"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtWallet1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text="NUX-1234-1234-1234"
+                    android:textAlignment="center"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                    android:textColor="#d7e8ef"
+                    android:textSize="@dimen/_18ssp" />
+
+                <TextView
+                    android:id="@+id/txtWalletBottom1"
+                    android:layout_width="match_parent"
+                    android:fontFamily="monospace"
+                    android:layout_height="wrap_content"
+                    android:text="NUX-1234-1234-1234"
+                    android:textAlignment="center"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                    android:textColor="#d7e8ef"
+                    android:textSize="@dimen/_12ssp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey_10" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="@dimen/spacing_middle" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_xxlarge"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/spacing_large"
+                android:paddingRight="@dimen/spacing_large">
+
+                <TextView
+                    android:id="@+id/txtBalance1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="monospace"
+                    android:text="12345678,12345678"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_24ssp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="@dimen/spacing_middle" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

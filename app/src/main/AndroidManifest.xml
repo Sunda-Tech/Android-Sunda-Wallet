@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ibnux.nuxwallet">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <application
+        android:name=".Aplikasi"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.AirdropActivity"></activity>
+
+        <receiver
+            android:name=".layanan.BootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".layanan.BackgroundService" />
+
+        <activity
+            android:name=".ui.OfflineSigningActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.IntroActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/noTitleTheme" />
+        <activity
+            android:name=".ui.PeersActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.ScanActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.QRCodeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.PinActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/noTitleTheme" />
+        <activity
+            android:name=".ui.ViewWalletActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.SendMoneyActivity"
+            android:screenOrientation="portrait">
+            <intent-filter android:label="Kirim Artos">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!--
+                Accepts URIs that begin with "nux://send”
+                nux://send/ADDRESS/AMOUNT
+                nux://send/NUX-1224-2121/20
+                or without ammount
+                nux://send/NUX-1224-2121
+                -->
+                <data
+                    android:host="kirim"
+                    android:scheme="artos" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.WalletGeneratorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:label="Dompet Sunda"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

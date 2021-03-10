@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.AirdropActivity">
+
+    <Spinner
+        android:background="@null"
+        android:id="@+id/spinnerWallet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:dropDownWidth="match_parent"
+        android:spinnerMode="dropdown" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/layoutForm">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:padding="@dimen/_2sdp"
+                android:text="COIN"
+                android:textSize="@dimen/_24ssp" />
+
+            <EditText
+                android:id="@+id/txtValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:digits="0987654321."
+                android:padding="@dimen/_2sdp"
+                android:background="@android:color/white"
+                android:ems="10"
+                android:imeOptions="actionNext"
+                android:inputType="phone"
+                android:selectAllOnFocus="true"
+                android:text="10000"
+                android:textAlignment="textEnd"
+                android:textSize="@dimen/_24ssp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
+
+        <EditText
+            android:id="@+id/txtNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:ems="10"
+            android:gravity="left|top"
+            android:hint="Message (Optional)\nIncrease Fee\nMessage is public"
+            android:background="@android:color/white"
+            android:inputType="textMultiLine"
+            android:padding="@dimen/_4sdp"
+            android:lines="4"
+            android:maxLines="4"
+            android:selectAllOnFocus="true"
+            android:textSize="@dimen/_14ssp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <CheckBox
+        android:id="@+id/offlineSigning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:text="Offline transaction signing" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSend"
+        style="@style/Button.Accent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="Send Airdrop"
+        android:textSize="@dimen/_18ssp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtStatus1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Processing NUX-"
+        android:textAlignment="center" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_10sdp"
+        android:indeterminate="true" />
+
+    <TextView
+        android:id="@+id/txtStatus2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1 from 23 address"
+        android:textAlignment="center" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listTransaksi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:itemCount="10"
+        tools:listitem="@layout/item_transaction"/>
+
+</LinearLayout>

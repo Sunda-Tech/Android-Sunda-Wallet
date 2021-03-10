@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/txtKey"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="4dp"
+        android:text="key" />
+
+    <TextView
+        android:id="@+id/txtValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:padding="4dp"
+        android:text="value"
+        android:textIsSelectable="true" />
+</TableRow>

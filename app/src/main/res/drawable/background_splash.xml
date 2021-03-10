@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:drawable="@color/blue_800"/>
+
+    <item>
+        <bitmap
+            android:gravity="top"
+            android:src="@drawable/networking"/>
+    </item>
+    <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/nuxcoin"/>
+    </item>
+    <item>
+        <bitmap
+            android:gravity="bottom"
+            android:src="@drawable/world_map"/>
+    </item>
+</layer-list>

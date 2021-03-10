@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:paddingTop="@dimen/list_item_spacing_half"
+    android:paddingBottom="@dimen/list_item_spacing_half"
+    android:orientation="vertical"
+    tools:context=".ui.AddWalletFragment"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Wallet"
+        android:textAlignment="center"
+        android:textSize="@dimen/_24ssp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnScanBarcode"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_48sdp"
+        android:gravity="center"
+        android:textSize="@dimen/_12ssp"
+        android:text="Scan Barcode"
+        android:theme="@style/Button.Accent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnGenerate"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_48sdp"
+        android:gravity="center"
+        android:textSize="@dimen/_12ssp"
+        android:text="Create or Input PassPhrase"
+        android:theme="@style/Button.Primary" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAddAddress"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_48sdp"
+        android:gravity="center"
+        android:textSize="@dimen/_12ssp"
+        android:text="Add Wallet Address"
+        android:theme="@style/Button.Accent" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Payment"
+        android:textAlignment="center"
+        android:textSize="@dimen/_24ssp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnScan"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_80sdp"
+        android:gravity="center"
+        android:textSize="@dimen/_18ssp"
+        android:text="Scan Wallet"
+        android:theme="@style/Button.Green" />
+
+</LinearLayout>

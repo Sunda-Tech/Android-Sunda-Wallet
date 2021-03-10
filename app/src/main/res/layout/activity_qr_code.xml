@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    tools:context=".ui.QRCodeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/layoutTombol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnAlamat"
+                    style="@style/Button.Accent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:padding="0dp"
+                    android:text="Address"
+                    android:textSize="@dimen/_10ssp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnPrivateKey"
+                    style="@style/Button.Accent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:padding="0dp"
+                    android:text="PassPhrase"
+                    android:textSize="@dimen/_10ssp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnPublicKey"
+                    style="@style/Button.Accent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:padding="0dp"
+                    android:text="PublicKey"
+                    android:textSize="@dimen/_10ssp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnPrivateKeyEncrypted"
+                    style="@style/Button.Accent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:padding="0dp"
+                    android:text="PassPhrase encrypted"
+                    android:textSize="@dimen/_10ssp" />
+            </LinearLayout>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnAlamatPublickey"
+                style="@style/Button.Accent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:padding="0dp"
+                android:text="Address + Public Key"
+                android:textSize="@dimen/_10ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutQR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgBarcode"
+                android:layout_width="@dimen/_300sdp"
+                android:layout_height="@dimen/_300sdp"
+                android:layout_gravity="center_horizontal"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                app:srcCompat="@drawable/nuxcoin" />
+
+            <TextView
+                android:id="@+id/txtAlamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NUX-XXXX-XXXX-XXXX-XXXX"
+                android:textAlignment="center"
+                android:textSize="@dimen/_18sdp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnShareImage"
+                style="@style/Button.Accent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Share" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSaveImage"
+                style="@style/Button.Accent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Save" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnShareAddress"
+                style="@style/Button.Accent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Copy Address" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

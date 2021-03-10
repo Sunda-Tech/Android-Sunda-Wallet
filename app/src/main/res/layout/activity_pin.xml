@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.PinActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@android:color/black"
+        android:gravity="center">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    android:layout_gravity="center_horizontal"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/nuxcoin" />
+
+                <TextView
+                    android:id="@+id/txtInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="PIN CODE"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/_18ssp" />
+
+                <EditText
+                    android:id="@+id/inputPin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="******"
+                    android:inputType="number|textPassword"
+                    android:password="true"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/_18ssp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_48sdp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:onClick="addpin"
+                        android:text="1"
+                        android:textSize="@dimen/_18ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_48sdp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:onClick="addpin"
+                        android:text="2"
+                        android:textSize="@dimen/_18ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_48sdp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:onClick="addpin"
+                        android:text="3"
+                        android:textSize="@dimen/_18ssp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_48sdp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:onClick="addpin"
+                        android:text="4"
+                        android:textSize="@dimen/_18ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_48sdp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:onClick="addpin"
+                        android:text="5"
+                        android:textSize="@dimen/_18ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_48sdp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:onClick="addpin"
+                        android:text="6"
+                        android:textSize="@dimen/_18ssp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_48sdp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:onClick="addpin"
+                        android:text="7"
+                        android:textSize="@dimen/_18ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_48sdp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:onClick="addpin"
+                        android:text="8"
+                        android:textSize="@dimen/_18ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_48sdp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:onClick="addpin"
+                        android:text="9"
+                        android:textSize="@dimen/_18ssp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_48sdp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:onClick="addpin"
+                        android:text="clr"
+                        android:textSize="@dimen/_18ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_48sdp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:onClick="addpin"
+                        android:text="0"
+                        android:textSize="@dimen/_18ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_48sdp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textSize="@dimen/_18ssp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button"
+                    style="@style/Button.Primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="OK"
+                    android:textSize="@dimen/_18ssp" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="If you forgot your PIN, you will lost all data"
+                    android:textAlignment="center" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
+</LinearLayout>
