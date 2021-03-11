@@ -30,8 +30,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_48sdp"
         android:gravity="center"
+        android:text="Nyieun dompet kanggo abdi"
         android:textSize="@dimen/_12ssp"
-        android:text="Create or Input PassPhrase"
         android:theme="@style/Button.Primary" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -39,24 +39,33 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_48sdp"
         android:gravity="center"
+        android:text="Tambihan dompet baturan"
         android:textSize="@dimen/_12ssp"
-        android:text="Add Wallet Address"
         android:theme="@style/Button.Accent" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Payment"
+        android:text="Kirim Artos"
         android:textAlignment="center"
         android:textSize="@dimen/_24ssp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnScan"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_80sdp"
+        android:layout_height="@dimen/_60sdp"
         android:gravity="center"
+        android:text="Scan Barcode"
         android:textSize="@dimen/_18ssp"
-        android:text="Scan Wallet"
         android:theme="@style/Button.Green" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAddAddress2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_60sdp"
+        android:gravity="center"
+        android:text="Ketik Alamat dompetna"
+        android:textSize="@dimen/_18ssp"
+        android:theme="@style/Button.Accent" />
 
 </LinearLayout>

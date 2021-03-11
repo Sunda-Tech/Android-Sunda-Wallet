@@ -283,9 +283,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                         public void onClick(DialogInterface dialog, int which) {
                             new AlertDialog.Builder(HomeActivity.this)
                                     .setIcon(R.mipmap.ic_launcher)
-                                    .setTitle("Are You sure?")
+                                    .setTitle("Yakin?")
                                     .setMessage(deskripsi)
-                                    .setPositiveButton("Sure", new DialogInterface.OnClickListener() {
+                                    .setPositiveButton("Yakin", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             ObjectBox.getTransaksi().query().equal(Transaksi_.senderRS,dompet.alamat).build().remove();
@@ -294,7 +294,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                                             adapter.reload(binding.tabLayout.getSelectedTabPosition()==0);
                                         }
                                     })
-                                    .setNegativeButton("Nope", new DialogInterface.OnClickListener() {
+                                    .setNegativeButton("Teu jadi", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             adapter.reload(binding.tabLayout.getSelectedTabPosition()==0);
@@ -303,7 +303,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                                     .show();
                         }
                     })
-                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    .setNegativeButton("Teu jadi", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             adapter.reload(binding.tabLayout.getSelectedTabPosition()==0);

@@ -64,6 +64,7 @@ public class AddWalletFragment extends BottomSheetDialogFragment implements View
         binding.btnGenerate.setOnClickListener(this);
         binding.btnScan.setOnClickListener(this);
         binding.btnAddAddress.setOnClickListener(this);
+        binding.btnAddAddress2.setOnClickListener(this);
     }
 
     @Override
@@ -75,6 +76,8 @@ public class AddWalletFragment extends BottomSheetDialogFragment implements View
             dismiss();
         }else  if(binding.btnAddAddress==v){
             askAddress();
+        }else  if(binding.btnAddAddress2==v){
+            askAddress2();
         }else  if(binding.btnScan==v){
             startActivityForResult(new Intent(getContext(), ScanActivity.class), 2346);
         }
@@ -139,6 +142,41 @@ public class AddWalletFragment extends BottomSheetDialogFragment implements View
         }
     }
 
+    public void askAddress2(){
+        String paste = "";
+        try{
+            ClipData.Item item = ((ClipboardManager)getActivity().getSystemService(Context.CLIPBOARD_SERVICE)).getPrimaryClip().getItemAt(0);
+            paste = item.getText().toString();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Wallet Address?");
+        final EditText input = new EditText(getContext());
+        input.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+        input.setGravity(Gravity.CENTER_HORIZONTAL);
+        input.setHint("SND-XXXX-XXXX-XXXX-XXXXX");
+        builder.setView(input);
+        input.setText(paste);
+        input.setSelectAllOnFocus(true);
+        builder.setPositiveButton("Kirim Artos", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String alamat = input.getText().toString();
+                if(alamat.length()==24){
+                    Intent i = new Intent(getContext(), SendMoneyActivity.class);
+                    i.putExtra("to",alamat);
+                    startActivity(i);
+                    dismiss();
+                }else{
+                    Utils.showToast("Dompet na salah",getActivity());
+                }
+            }
+        });
+        builder.setNegativeButton("Cancel",null);
+        builder.show();
+    }
+
     public void askAddress(){
         String paste = "";
         try{
@@ -163,7 +201,7 @@ public class AddWalletFragment extends BottomSheetDialogFragment implements View
                 if(alamat.length()==24){
                     askName(alamat);
                 }else{
-                    Utils.showToast("Address not valied",getActivity());
+                    Utils.showToast("Dompet na salah",getActivity());
                 }
             }
         });
