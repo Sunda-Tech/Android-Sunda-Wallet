@@ -3,37 +3,44 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/menu_nav_search"
-        android:icon="@android:drawable/ic_menu_search"
-        android:title="Search"
-        app:showAsAction="ifRoom" />
-
-
-    <item
-        android:id="@+id/menu_nav_backup"
-        android:title="Backup" />
+            android:id="@+id/menu_nav_search"
+            android:icon="@android:drawable/ic_menu_search"
+            android:title="@string/search"
+            app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/menu_nav_restore"
-        android:title="Restore" />
+            android:id="@+id/menu_nav_register"
+            android:title="@string/register"/>
 
     <item
-        android:id="@+id/menu_nav_changepin"
-        android:title="Change Pin" />
-    <item
-        android:id="@+id/menu_nav_peers"
-        android:title="Peers" />
-    <item
-        android:id="@+id/menu_nav_txListener"
-        android:title="Transaction Listener" />
-    <item
-        android:id="@+id/menu_nav_airdrop"
-        android:title="Send Air Drop" />
-    <item
-        android:id="@+id/menu_nav_faq"
-        android:title="FAQ" />
+            android:id="@+id/menu_nav_backup"
+            android:title="@string/backup"/>
 
     <item
-        android:id="@+id/menu_nav_update"
-        android:title="Check for update" />
+            android:id="@+id/menu_nav_restore"
+            android:title="@string/restore"/>
+
+    <item
+            android:id="@+id/menu_nav_changepin"
+            android:title="@string/change_pin"/>
+    <item
+            android:id="@+id/menu_nav_peers"
+            android:title="@string/peers"/>
+    <item
+            android:id="@+id/menu_nav_txListener"
+            android:title="@string/tx_listener"/>
+    <item
+            android:id="@+id/menu_nav_airdrop"
+            android:title="@string/send_airdrop"/>
+    <item
+            android:id="@+id/menu_nav_faq"
+            android:title="@string/faq"/>
+
+    <item
+            android:id="@+id/menu_nav_share"
+            android:title="@string/share"/>
+
+    <item
+            android:id="@+id/menu_nav_update"
+            android:title="@string/check_for_update"/>
 </menu>

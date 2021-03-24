@@ -1,0 +1,190 @@
+<resources>
+    <string name="app_name">Dompet Sunda</string>
+    <string name="icon_name">Dompet</string>
+    <string name="coin_name">SuNDa Coin</string>
+    <string name="app_intro_title_1">Apa itu cryptocurrency?</string>
+    <string name="app_intro_description_1">Cryptocurrency (mata uang crypto) adalah sebuah mata uang digital atau virtual yang dirancang sebagai alat tukar. Cryptocurrency menggunakan sistem kriptografi untuk mengamankan dan memverifikasi setiap transaksi. Semua transaksi disimpan di BlockchainCryptocurrency (mata uang crypto) adalah sebuah mata uang digital atau virtual yang dirancang sebagai alat tukar. Cryptocurrency menggunakan sistem kriptografi untuk mengamankan dan memverifikasi setiap transaksi. Semua transaksi disimpan di Blockchain</string>
+    <string name="app_intro_title_2">Apa itu BlockChain?</string>
+    <string name="app_intro_description_2">Blockchain adalah sistem database dengan data yang berisi info dari data sebelumnya, sehingga data akan berurut dan mudah divalidasi jika ada perubahan. data bersifat permanen</string>
+    <string name="app_intro_title_3">Apa itu alamat dompet?</string>
+    <string name="app_intro_description_3">Alamat Dompet seperti nomor rekening, sebagai alamat penerima transaksi</string>
+    <string name="app_intro_title_4">Apa itu Public key?</string>
+    <string name="app_intro_description_4">public key merupakan kunci kriptografi yang bisa anda bagikan ke orang lain, digunakan untuk enkripsi data digital, dan bisa dibuka dengan Private key</string>
+    <string name="app_intro_title_5">Apa itu Private key?</string>
+    <string name="app_intro_description_5">Private key merupakan kunci kriptografi yang rahasia, hanya anda yang boleh tahu, tidak boleh dibagikan, digunakan untuk menandatangani transaksi secara digital dan mengenkripsi data</string>
+    <string name="app_intro_title_6">Apa itu Passphrase?</string>
+    <string name="app_intro_description_6">Passphrase pada Cryptocurrency disini merupakan Private key, dan tidak boleh anda bagikan ke orang lain, RAHASIA, atau uang anda di dompet cryptocurrency bisa dicuri</string>
+    <string name="app_intro_title_7">Apa itu Biaya transfer (Fee)?</string>
+    <string name="app_intro_description_7">Biaya Transfer akan diberikan kepada pencatat Blockchain sebagai upah untuk mencatat ke Blockchain, biasa disebut Miner, penambang bitcoin.</string>
+    <string name="app_intro_title_8">Apa itu Sunda Coin?</string>
+    <string name="app_intro_description_8">Sunda Coin merupakan Cryptocurrency yang dibuat oleh Sunda Empire dari source code Cryptocurrency NXT</string>
+    <string name="app_intro_title_9">Apakah Sunda Coin bernilai?</string>
+    <string name="app_intro_description_9">Sunda Coin bisa bernilai, bisa tidak, tergantung kepercayaan penggunanya, dan apakah sering digunakan sehari hari, saat ini Sunda Coin hanya untuk belajar Cryptocurrency</string>
+    <string name="app_intro_title_10">Apakah Airdrop itu?</string>
+    <string name="app_intro_description_10">Untuk Cryptocurrency yang coinnya sudah dibuat, biasanya akan dibagikan ke pengguna secara cuma-cuma, agar bisa digunakan langsung untuk transaksi, sebagai stimulus awal. Disini kamu bisa gunakan menu Request Airdrop jika ingin saldo cuma-cuma, ajak juga temanmu untuk belajar CryptoCurrency</string>
+
+    <string name="first_wallet_note">Creator of this Wallet</string>
+
+    <string name="service_notification_title">Update lagi jam %1$s</string>
+    <string name="service_notification_message">Cek transaksi setiap %1$d menit</string>
+
+    <string name="service_notification_waiting">Menunggu uang masuk</string>
+    <string name="service_notification_button_send">Kirim Coin</string>
+
+    <string name="service_notification_checking">Cek dompet %1$s</string>
+    <string name="service_notification_received_title">%1$s mengirim kamu coin</string>
+    <string name="service_notification_received_message">"Menerima %1$s Sunda Coin dari %2$s</string>
+    <string name="service_notification_sending_title">Kamu mengirim koin dari %1$s</string>
+    <string name="service_notification_sending_message">"%1$s Sunda Coin untuk %2$s telah dikirim</string>
+
+    <string name="chat">Chat</string>
+
+    <string name="save">Simpan</string>
+    <string name="cancel">Batal</string>
+    <string name="sure">Siap</string>
+    <string name="add">Tambah</string>
+    <string name="delete">Hapus</string>
+    <string name="send_now">Kirim Sekarang</string>
+    <string name="invalid">Tidak valid</string>
+    <string name="optional">Opsional</string>
+    <string name="balance">Saldo</string>
+    <string name="search">Cari</string>
+    <string name="address">Alamat</string>
+    <string name="passphrase">PassPhrase</string>
+    <string name="public_key">Public Key</string>
+    <string name="encrypted_passphrase">Encrypted PassPhrase</string>
+    <string name="address_public_key">Address + Public Key</string>
+    <string name="share">Bagikan</string>
+    <string name="copy_address">Copy Address</string>
+    <string name="coin">Coin</string>
+    <string name="fee">Upah</string>
+    <string name="scan_qrcode">Scan QRcode</string>
+    <string name="create_wallet">Buat dompet atau ketik PassPhrase</string>
+    <string name="add_wallet_address">Tambah buku kontak</string>
+    <string name="add_wallet_title">Tambah Dompet</string>
+    <string name="payment_title">Pembayaran</string>
+    <string name="scan_wallet">Scan QR Wallet</string>
+    <string name="use_wallet_address">Gunakan alamat dompet</string>
+    <string name="transaction">Transaksi</string>
+    <string name="backup">Backup</string>
+    <string name="restore">Restore</string>
+    <string name="change_pin">Ganti Pin</string>
+    <string name="peers">Server</string>
+    <string name="tx_listener">Cek otomatis transaksi</string>
+    <string name="faq">Tanya Jawab</string>
+    <string name="check_for_update">Cek versi terbaru</string>
+    <string name="register">Minta dana awal</string>
+
+    <string name="error_decrypting">Gagal decrypt passphrase\nYakin PIN sudah benar?\n\n</string>
+    <string name="unknown_qrcode">QRCode tidak dikenali</string>
+    <string name="wallet_address_ask">Alamat Wallet?</string>
+    <string name="wallet_address_hint">SND-XXXX-XXXX-XXXX-XXXXX</string>
+    <string name="wallet_note">Catatan</string>
+    <string name="wallet_added">Dompet ditambahkan</string>
+    <string name="wallet_dont_have">Kamu belum memiliki dompet</string>
+    <string name="address_not_valid">Alamat dompet tidak benar</string>
+    <string name="dont_empty">Wajib diisi</string>
+    <string name="insufficient_funds">Saldo tidak cukup, Butuh %1$s Coin</string>
+
+    <string name="airdrop_title">Airdrop!!</string>
+    <string name="airdrop_message">"Mengirim Airdrop sekarang?\nTidak bisa dibatalkan\n%1$s Coin akan dibagikan ke %2$d Dompet"</string>
+    <string name="airdrop_processing">Memproses %1$s</string>
+    <string name="airdrop_failed">Mengirim Airdrop Gagal!!</string>
+    <string name="airdrop_success">Mengirim Airdrop Sukses!!</string>
+
+    <string name="failed_signing_offline">Gagal menandatangani Transaksi\nCoba gunakan tanda tangan online, tapi PassPhrase akan dikirim ke server</string>
+    <string name="title_offline_signing">Offline Signing process</string>
+    <string name="title_offline_transaction">Offline Signing transaction</string>
+
+    <string name="add_peer">Tambah Server?</string>
+    <string name="add_peer_error_nohttp">Harus diawali http:// atau https://</string>
+    <string name="add_peer_error_failed1">Gagal koneksi ke server, tidak ditambahkan</string>
+    <string name="add_peer_error_failed2">Gagal koneksi ke server, tidak ditambahkan. %1$s</string>
+    <string name="change_peer">Ganti URL Server?</string>
+    <string name="peer_hint">https://sunda.club</string>
+    <string name="peer_set_default">Jadikan server utama</string>
+    <string name="peer_success_added">Sukses %1$d server ditambahkan</string>
+
+    <string name="pin_code_title">PIN CODE</string>
+    <string name="pin_create_new">Buat PIN baru</string>
+    <string name="pin_repeat_new">Ulang PIN baru</string>
+    <string name="pin_different_new">PIN beda, ulangi lagi</string>
+    <string name="pin_wrong">PIN Salah</string>
+    <string name="pin_not_change">PIN tidak diubah</string>
+
+    <string name="qrcode">QRcode</string>
+    <string name="a_copied">%1$s di-copy!</string>
+    <string name="qrcode_saved">Disimpan di %1$s</string>
+    <string name="qrcode_failed_saved">Gagal menyimpan QRCode</string>
+    <string name="a_public_key_with_address">Public Key dengan alamt\n%1$s</string>
+    <string name="a_public_key">Public Key %1$s</string>
+    <string name="a_secret_passphrase">Secret Passphrase\n%1$s</string>
+    <string name="a_encrypted_secret_assphrase">Secret Passphrase\n%1$s</string>
+    <string name="a_failed_encrypted_secret_assphrase">Gagal Enkripsi passphrase\n\n%1$s</string>
+    <string name="share_wallet">Bagikan Dompet</string>
+    <string name="share_wallet_failed">Gagal membagikan file\n\n%1$s</string>
+    <string name="failed_save_image">Gagal menyimpan gambar</string>
+    <string name="send_coin">Kirim Sunda coin</string>
+    <string name="calculate_fee">Kalkulasi Upah</string>
+    <string name="checking_fee">Cek Upah…</string>
+    <string name="sending_coin">Mengirim coin…</string>
+    <string name="sending_coin_failed">Kirim Coin gagal!</string>
+    <string name="sending_coin_success">Kirim Coin sukses!!\nAkan muncul setelah divalidasi penambang</string>
+    <string name="sending_coin_success_get_tx">Kirim Coin Sukses!!\nmencoba mengambil detil transaksi…</string>
+    <string name="sending_coin_success_no_tx">Kirim COIN SUKSES, Mengambil detil transaksinya gagal</string>
+    <string name="failed_get_tx">Gagal mengambil detil transaksi</string>
+
+    <string name="getting_balance">Mengambil saldo…</string>
+    <string name="account_not_registered">Dompet belum terdaftar, harus ada saldo</string>
+    <string name="failed_to_connect_to_server">Gagal koneksi ke server\n%1$s</string>
+    <string name="ask_wallet_name">Nama Dompet?</string>
+    <string name="ask_wallet_note">Tambah catatan?</string>
+    <string name="ask_delete">Hapus?</string>
+    <string name="ask_are_you_sure">Yakin?</string>
+    <string name="wallet_saved">Dompet disimpan</string>
+    <string name="wallet_not_saved">Dompet tidak disimpan</string>
+    <string name="wallet_no_name">Tanpa nama</string>
+    <string name="failed_parsing_data_from_server">Gagal memproses data dari server\n%1$s</string>
+    <string name="add_new_wallet">Tambah Dompet baru</string>
+    <string name="requesting_tx">Meminta detil transaksi…</string>
+    <string name="submit_tx">Mengirim transaksi…</string>
+    <string name="failed_save_file">Gagal menyimpan ke file\n%1$s</string>
+
+
+    <string name="update_title">Pembaharuan tersedia</string>
+    <string name="update_message">Update Sunda Wallet ke versi terbaru!</string>
+
+    <string name="dialog_tx_interval_title">Interval periksa transaksi (dalam menit)</string>
+    <string name="dialog_tx_interval_hint">0 untuk matikan cek otomatis</string>
+    <string name="dialog_backup_wallet_title">Backup Semua Dompet</string>
+    <string name="dialog_backup_wallet_message">Dompet akan di enkripsi dengan PIN aplikasi, jika lupa PIN, maka tidak dapat di-restore</string>
+    <string name="dialog_restore_wallet_title">Restore Semua Dompet</string>
+    <string name="dialog_restore_wallet_message">Dompet dienkripsi oleh PIN, Pastikan PIN sesuai saat di-backup, jika lupa PIN, maka tidak dapat di-restore</string>
+    <string name="backup_finished"> %1$d dompet telah di-backup\n%2$s</string>
+    <string name="folder_not_found">Folder tidak ditemukan!\n\n%1$s</string>
+    <string name="failed_import_file">Gagal import file\n\n%1$s</string>
+    <string name="failed_import">Gagal import\n\n%1$s</string>
+    <string name="success_import_wallet">Selesai import dompet</string>
+    <string name="send_message">Pesan (Opsional)\nPesan bersifat terbuka\nBanyak pesan, upah makin besar</string>
+    <string name="send_airdrop">Kirim Airdrop</string>
+    <string name="my_wallet">Dompet saya</string>
+    <string name="address_book">Buku Alamat</string>
+    <string name="recipient_field_hint">SND-ADDRESS-RECIPIENTS</string>
+    <string name="recipient_public_key">PublicKey penerima (Opsional)</string>
+    <string name="share_subject">Yuk urang make Sunda Coin</string>
+    <string name="share_using">Bagikan menggunakan</string>
+    <string name="share_body">Yuk urang make Sunda Coin di https://sunda.club</string>
+    <string name="copy_public_key">Copy Public Key</string>
+    <string name="copy_private_key">Copy Private Key</string>
+    <string name="warning_forgot_pin">Data akan hilang jika lupa PIN</string>
+
+    <string name="dialog_warning_title">WARNING!!</string>
+    <string name="dialog_warning_body">Private key bersifat rahasia, jangan dibagikan ke siapapun, di-copy hanya untuk di-backup, simpan di tempat aman, tulis di kertas dan sembunyikan, atau lainnya</string>
+
+    <string name="dialog_share_referral_title">Simulasi Referral Link</string>
+    <string name="dialog_share_referral_body">Dapatkan tambahan coin dengan mengajak teman kamu menggunakan Sunda Coin.\nReferral: %1$s</string>
+    <string name="dialog_share_referral_text">Yuk urang make Sunda Coin, unduh di: %1$s</string>
+    <string name="dialog_share_warning">Hanya untuk dompet sendiri, buka dompet anda</string>
+    <string name="open">Buka</string>
+    <string name="close">Tutup</string>
+</resources>

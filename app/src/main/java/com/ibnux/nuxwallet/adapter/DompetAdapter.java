@@ -14,14 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.androidnetworking.common.Priority;
 import com.ibnux.nuxwallet.Aplikasi;
+import com.ibnux.nuxwallet.Constants;
 import com.ibnux.nuxwallet.R;
 import com.ibnux.nuxwallet.data.Dompet;
 import com.ibnux.nuxwallet.data.Dompet_;
@@ -29,7 +28,6 @@ import com.ibnux.nuxwallet.data.ObjectBox;
 import com.ibnux.nuxwallet.utils.JsonCallback;
 import com.ibnux.nuxwallet.utils.NuxCoin;
 import com.ibnux.nuxwallet.utils.Utils;
-
 import org.json.JSONObject;
 
 import java.util.List;
@@ -73,16 +71,24 @@ public class DompetAdapter extends RecyclerView.Adapter<DompetAdapter.MyViewHold
                 notifyDataSetChanged();
                 return;
             }
-            String alamat = "SND-TNHJ-LAC5-7DGL-HR7Y5";
+            String alamat = Constants.currency + Aplikasi.app.getString(R.string.first_wallet_address);
             if(ObjectBox.getDompet(alamat)==null) {
                 Dompet dompet = new Dompet();
-                dompet.nama = "Kang iBNuX";
-                dompet.publicKey = "0f04b0abc5f2d2518cc7f56ef5225968901bbddadf0531a9c13645457d477860";
+                dompet.nama = "Nux Bank";
+                dompet.publicKey = "5804157abff4467ca84d602583c20aeb1defa9e0bf5ecdeed71412b137141d7a";
+                dompet.alamat = Constants.currency + "-X9BN-28AP-KKAF-8VVNZ";
+                dompet.isMe = false;
+                dompet.catatan = "Penyalur keuangan Nux Coin";
+                ObjectBox.addDompet(dompet);
+                dompet = new Dompet();
+                dompet.nama = Aplikasi.app.getString(R.string.first_wallet_name);
+                dompet.publicKey = Aplikasi.app.getString(R.string.first_wallet_public_key);
                 dompet.alamat = alamat;
                 dompet.isMe = false;
-                dompet.catatan = "Bendahara Sunda Coin ";
+                dompet.catatan = Aplikasi.app.getString(R.string.first_wallet_note);
                 ObjectBox.addDompet(dompet);
                 reload(isMe);
+
             }else
                 notifyDataSetChanged();
         }else
@@ -134,11 +140,17 @@ public class DompetAdapter extends RecyclerView.Adapter<DompetAdapter.MyViewHold
             public void onJsonCallback(JSONObject jsonObject) {
                 try{
                     if(jsonObject.has("balanceNQT")){
-                        if(dompet.saldo!=jsonObject.getLong("balanceNQT")) {
-                            dompet.saldo = jsonObject.getLong("balanceNQT");
+                        long saldo = Long.parseUnsignedLong(jsonObject.getString("balanceNQT"));
+                        Utils.log("Online to unsignedlong "+saldo);
+                        if(dompet.saldo!=saldo) {
+                            dompet.saldo = saldo;
+                            Utils.log(dompet.alamat+" online balanceNQT : ");
                             holder.txtBalance.setText(Utils.nuxFormat(dompet.saldo));
                             notifyDataSetChanged();
                             ObjectBox.addDompet(dompet);
+                        }else{
+                            Utils.log(dompet.alamat+" offline balanceNQT : "+dompet.saldo);
+                            holder.txtBalance.setText(Utils.nuxFormat(dompet.saldo));
                         }
                     }else if(jsonObject.has("errorCode") && jsonObject.getInt("errorCode")==5){
                         holder.txtBalance.setText("Wallet not registered");

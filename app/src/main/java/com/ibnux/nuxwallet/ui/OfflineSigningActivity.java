@@ -15,12 +15,10 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.webkit.JavascriptInterface;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.ibnux.nuxwallet.Aplikasi;
+import com.ibnux.nuxwallet.R;
 import com.ibnux.nuxwallet.databinding.ActivityOfflineSigningBinding;
-
 import im.delight.android.webview.AdvancedWebView;
 
 public class OfflineSigningActivity extends AppCompatActivity implements AdvancedWebView.Listener {
@@ -30,7 +28,7 @@ public class OfflineSigningActivity extends AppCompatActivity implements Advance
         super.onCreate(savedInstanceState);
         binding = ActivityOfflineSigningBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        setTitle("Nandatangan Oppline");
+        setTitle(R.string.title_offline_signing);
         String secret = "";
         Intent i = getIntent();
         try{

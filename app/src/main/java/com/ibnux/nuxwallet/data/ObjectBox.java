@@ -1,10 +1,9 @@
 package com.ibnux.nuxwallet.data;
 
 import android.content.Context;
-
 import com.ibnux.nuxwallet.Aplikasi;
 import com.ibnux.nuxwallet.Constants;
-
+import com.ibnux.nuxwallet.utils.Utils;
 import io.objectbox.Box;
 import io.objectbox.BoxStore;
 
@@ -47,7 +46,8 @@ public class ObjectBox {
     }
 
     public static String getNamaDompet(String alamat){
-        Dompet dpt = getDompet().query().equal(Dompet_.alamat,alamat).build().findFirst();
+        Utils.log("getNamaDompet: "+alamat);
+        Dompet dpt = getDompet().query().equal(Dompet_.alamat, alamat).build().findFirst();
         if(dpt==null)
             return alamat;
         else

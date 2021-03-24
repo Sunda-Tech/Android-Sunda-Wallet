@@ -12,9 +12,7 @@ package com.ibnux.nuxwallet.ui;
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.zxing.Result;
 import com.ibnux.nuxwallet.databinding.ActivityScanBinding;
 import com.karumi.dexter.Dexter;
@@ -23,7 +21,6 @@ import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
-
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 

@@ -11,12 +11,15 @@ package com.ibnux.nuxwallet.data;
 
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
+import io.objectbox.annotation.Unique;
 
 @Entity
 public class Transaksi {
     @Id
     public long id;
+    public String block;
     public boolean isRead = false;
+    @Unique
     public String transaction;
     public String senderRS;
     public String recipientRS;
@@ -30,7 +33,6 @@ public class Transaksi {
     public String sender;
     public String recipient;
     public String signature;
-    public String block;
     public String ecBlockId;
     public int confirmations;
     public int deadline;

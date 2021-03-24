@@ -14,12 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.google.gson.Gson;
 import com.ibnux.nuxwallet.Aplikasi;
 import com.ibnux.nuxwallet.R;
 import com.ibnux.nuxwallet.data.ObjectBox;
@@ -78,14 +77,14 @@ public class TransaksiAdapter extends RecyclerView.Adapter<TransaksiAdapter.MyVi
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Transaksi tx = datas.get(position);
-
+        Utils.log("tx: "+new Gson().toJson(tx));
         if(tx.isRead){
             holder.cardTransaction.setCardBackgroundColor(ContextCompat.getColor(Aplikasi.app,R.color.grey_5));
         }else{
             holder.cardTransaction.setCardBackgroundColor(ContextCompat.getColor(Aplikasi.app,R.color.amber_100));
         }
 
-        if(tx.recipientRS.equals(alamat)){
+        if(tx.recipientRS==null || tx.recipientRS.equals(alamat)){
             holder.layoutStatus.setBackgroundColor(ContextCompat.getColor(Aplikasi.app,R.color.green_A400));
             holder.txtBalance.setText("+ "+Utils.nuxFormat(Long.parseLong(tx.amountNQT)));
             holder.txtBalance.setTextColor(ContextCompat.getColor(Aplikasi.app,R.color.green_A700));
@@ -114,12 +113,15 @@ public class TransaksiAdapter extends RecyclerView.Adapter<TransaksiAdapter.MyVi
         });
         if(Aplikasi.unixtime!=0L) {
             holder.cardTgl.setVisibility(View.VISIBLE);
+            Utils.log("Wallet "+tx.block);
             Utils.log("UnixTime "+Aplikasi.unixtime);
-            long time = Aplikasi.unixtime + (tx.timestamp*1000);
+            Utils.log("blockTimestamp "+tx.blockTimestamp);
+            long time = Aplikasi.unixtime + (tx.blockTimestamp*1000L);
             Utils.log("BlockTime "+time);
+            Utils.log("toDate "+Utils.toDate(time, "All"));
             holder.txtTgl.setText(Utils.toDate(time, "d"));
             holder.txtThn.setText(Utils.toDate(time, "m")+"/"+Utils.toDate(time, "y"));
-            holder.txtJam.setText(Utils.toDate(time, "H")+":"+Utils.toDate(time, "m"));
+            holder.txtJam.setText(Utils.toDate(time, "H:i"));
         }else{
             holder.cardTgl.setVisibility(View.GONE);
         }

@@ -32,12 +32,12 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:padding="@dimen/_2sdp"
-                android:text="COIN"
-                android:textSize="@dimen/_24ssp" />
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:padding="@dimen/_2sdp"
+                    android:text="@string/balance"
+                    android:textSize="@dimen/_24ssp"/>
 
             <EditText
                 android:id="@+id/txtValue"
@@ -64,20 +64,20 @@
         app:cardUseCompatPadding="true">
 
         <EditText
-            android:id="@+id/txtNote"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            android:ems="10"
-            android:gravity="left|top"
-            android:hint="Message (Optional)\nIncrease Fee\nMessage is public"
-            android:background="@android:color/white"
-            android:inputType="textMultiLine"
-            android:padding="@dimen/_4sdp"
-            android:lines="4"
-            android:maxLines="4"
-            android:selectAllOnFocus="true"
-            android:textSize="@dimen/_14ssp" />
+                android:id="@+id/txtNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:gravity="left|top"
+                android:hint="@string/send_message"
+                android:background="@android:color/white"
+                android:inputType="textMultiLine"
+                android:padding="@dimen/_4sdp"
+                android:lines="4"
+                android:maxLines="4"
+                android:selectAllOnFocus="true"
+                android:textSize="@dimen/_14ssp"/>
 
     </androidx.cardview.widget.CardView>
 

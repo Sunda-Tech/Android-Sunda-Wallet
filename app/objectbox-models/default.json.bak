@@ -61,7 +61,7 @@
     },
     {
       "id": "2:1252963501468285878",
-      "lastPropertyId": "26:7410830393129083309",
+      "lastPropertyId": "27:2294413877273214276",
       "name": "Transaksi",
       "properties": [
         {
@@ -141,7 +141,9 @@
         {
           "id": "20:3038342786515119698",
           "name": "block",
-          "type": 9
+          "indexId": "1:7676976934321020602",
+          "type": 9,
+          "flags": 2080
         },
         {
           "id": "21:7958070782927914590",
@@ -177,6 +179,12 @@
           "name": "subtype",
           "type": 5,
           "flags": 4
+        },
+        {
+          "id": "27:2294413877273214276",
+          "name": "isRead",
+          "type": 1,
+          "flags": 4
         }
       ],
       "relations": []
@@ -202,7 +210,7 @@
     }
   ],
   "lastEntityId": "3:7832986057374004893",
-  "lastIndexId": "0:0",
+  "lastIndexId": "1:7676976934321020602",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 5,

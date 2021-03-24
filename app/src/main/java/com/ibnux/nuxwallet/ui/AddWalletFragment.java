@@ -10,11 +10,7 @@ package com.ibnux.nuxwallet.ui;
  \******************************************************************************/
 
 import android.app.AlertDialog;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
+import android.content.*;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Gravity;
@@ -23,13 +19,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import com.androidnetworking.common.Priority;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.ibnux.nuxwallet.Aplikasi;
+import com.ibnux.nuxwallet.R;
 import com.ibnux.nuxwallet.data.Dompet;
 import com.ibnux.nuxwallet.data.ObjectBox;
 import com.ibnux.nuxwallet.databinding.FragmentAddWalletBinding;
@@ -37,7 +32,6 @@ import com.ibnux.nuxwallet.utils.JsonCallback;
 import com.ibnux.nuxwallet.utils.NuxCoin;
 import com.ibnux.nuxwallet.utils.Utils;
 import com.scottyab.aescrypt.AESCrypt;
-
 import org.json.JSONObject;
 
 import static android.app.Activity.RESULT_OK;
@@ -98,7 +92,7 @@ public class AddWalletFragment extends BottomSheetDialogFragment implements View
                             startActivity(i);
                             dismiss();
                         }catch (Exception e){
-                            Toast.makeText(getContext(), "Failed to decrypt passphrase\nIs PIN valid?\n\n"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), getString(R.string.error_decrypting)+e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }else{
                         Intent i = new Intent(getContext(),WalletGeneratorActivity.class);
@@ -120,7 +114,7 @@ public class AddWalletFragment extends BottomSheetDialogFragment implements View
                             dismiss();
                         }catch (Exception e){
                             e.printStackTrace();
-                            Utils.showToast("Unknown QRCode",getActivity());
+                            Utils.showToast(getString(R.string.unknown_qrcode),getActivity());
                         }
                     }else if(dt.startsWith("APK:")){
                         dt = dt.substring(4);
@@ -142,41 +136,6 @@ public class AddWalletFragment extends BottomSheetDialogFragment implements View
         }
     }
 
-    public void askAddress2(){
-        String paste = "";
-        try{
-            ClipData.Item item = ((ClipboardManager)getActivity().getSystemService(Context.CLIPBOARD_SERVICE)).getPrimaryClip().getItemAt(0);
-            paste = item.getText().toString();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Wallet Address?");
-        final EditText input = new EditText(getContext());
-        input.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
-        input.setGravity(Gravity.CENTER_HORIZONTAL);
-        input.setHint("SND-XXXX-XXXX-XXXX-XXXXX");
-        builder.setView(input);
-        input.setText(paste);
-        input.setSelectAllOnFocus(true);
-        builder.setPositiveButton("Kirim Artos", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String alamat = input.getText().toString();
-                if(alamat.length()==24){
-                    Intent i = new Intent(getContext(), SendMoneyActivity.class);
-                    i.putExtra("to",alamat);
-                    startActivity(i);
-                    dismiss();
-                }else{
-                    Utils.showToast("Dompet na salah",getActivity());
-                }
-            }
-        });
-        builder.setNegativeButton("Cancel",null);
-        builder.show();
-    }
-
     public void askAddress(){
         String paste = "";
         try{
@@ -186,39 +145,75 @@ public class AddWalletFragment extends BottomSheetDialogFragment implements View
             e.printStackTrace();
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Wallet Address?");
+        builder.setTitle(R.string.wallet_address_ask);
         final EditText input = new EditText(getContext());
         input.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
         input.setGravity(Gravity.CENTER_HORIZONTAL);
-        input.setHint("SND-XXXX-XXXX-XXXX-XXXXX");
+        input.setHint(R.string.wallet_address_hint);
         builder.setView(input);
         input.setText(paste);
         input.setSelectAllOnFocus(true);
-        builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String alamat = input.getText().toString();
                 if(alamat.length()==24){
                     askName(alamat);
                 }else{
-                    Utils.showToast("Dompet na salah",getActivity());
+                    Utils.showToast(getString(R.string.address_not_valid),getActivity());
                 }
             }
         });
-        builder.setNegativeButton("Cancel",null);
+        builder.setNegativeButton(R.string.cancel,null);
+        builder.show();
+    }
+
+
+    public void askAddress2(){
+        String paste = "";
+        try{
+            ClipData.Item item = ((ClipboardManager)getActivity().getSystemService(Context.CLIPBOARD_SERVICE)).getPrimaryClip().getItemAt(0);
+            paste = item.getText().toString();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle(R.string.wallet_address_ask);
+        final EditText input = new EditText(getContext());
+        input.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+        input.setGravity(Gravity.CENTER_HORIZONTAL);
+        input.setHint(R.string.wallet_address_hint);
+        builder.setView(input);
+        input.setText(paste);
+        input.setSelectAllOnFocus(true);
+        builder.setPositiveButton(R.string.send_coin, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String alamat = input.getText().toString();
+                if(alamat.length()==24){
+                    Intent i = new Intent(getContext(), SendMoneyActivity.class);
+                    i.putExtra("to",alamat);
+                    startActivity(i);
+                    dismiss();
+                }else{
+                    Utils.showToast(R.string.address_not_valid,getActivity());
+                }
+            }
+        });
+        builder.setNegativeButton(R.string.cancel,null);
         builder.show();
     }
 
     public void askName(String alamat){
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Wallet Name?");
+        builder.setTitle(R.string.wallet_address_ask);
         final EditText input = new EditText(getContext());
         input.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_CAP_WORDS);
         input.setGravity(Gravity.CENTER_HORIZONTAL);
-        input.setHint("Wallet function");
+        input.setHint(R.string.wallet_note);
         builder.setView(input);
         input.setSelectAllOnFocus(true);
-        builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String nm = input.getText().toString();
@@ -248,7 +243,7 @@ public class AddWalletFragment extends BottomSheetDialogFragment implements View
                             dompet.isMe = false;
                         }
                         ObjectBox.addDompet(dompet);
-                        Utils.showToast("Wallet Added", getActivity());
+                        Utils.showToast(getString(R.string.wallet_added), getActivity());
                         AddWalletFragment.this.dismiss();
                     }
 
@@ -259,13 +254,13 @@ public class AddWalletFragment extends BottomSheetDialogFragment implements View
                         dompet.nama = nama;
                         dompet.isMe = false;
                         ObjectBox.addDompet(dompet);
-                        Utils.showToast("Wallet Added", getActivity());
+                        Utils.showToast(getString(R.string.wallet_added), getActivity());
                         AddWalletFragment.this.dismiss();
                     }
                 });
             }
         });
-        builder.setNegativeButton("Cancel",null);
+        builder.setNegativeButton(R.string.cancel,null);
         builder.show();
     }
 }

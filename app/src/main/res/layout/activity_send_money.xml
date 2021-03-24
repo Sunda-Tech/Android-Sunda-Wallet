@@ -35,19 +35,19 @@
                     android:orientation="horizontal">
 
                     <AutoCompleteTextView
-                        android:id="@+id/txtAlamat"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:capitalize="characters"
-                        android:ems="10"
-                        android:fontFamily="monospace"
-                        android:hint="NUX-ADDRESS-RECIPIENTS"
-                        android:imeOptions="actionNext"
-                        android:inputType="textPersonName|textCapCharacters"
-                        android:maxLength="24"
-                        android:selectAllOnFocus="true"
-                        android:textSize="@dimen/_16ssp" />
+                            android:id="@+id/txtAlamat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:capitalize="characters"
+                            android:ems="10"
+                            android:fontFamily="monospace"
+                            android:hint="@string/recipient_field_hint"
+                            android:imeOptions="actionNext"
+                            android:inputType="textPersonName|textCapCharacters"
+                            android:maxLength="24"
+                            android:selectAllOnFocus="true"
+                            android:textSize="@dimen/_16ssp"/>
 
                     <ImageButton
                         android:id="@+id/btnScan"
@@ -70,17 +70,17 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/txtPK"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:fontFamily="monospace"
-                        android:hint="PublicKey recipient (Optional)"
-                        android:imeOptions="actionNext"
-                        android:inputType="text"
-                        android:selectAllOnFocus="true"
-                        android:textSize="@dimen/_12ssp" />
+                            android:id="@+id/txtPK"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:fontFamily="monospace"
+                            android:hint="@string/recipient_public_key"
+                            android:imeOptions="actionNext"
+                            android:inputType="text"
+                            android:selectAllOnFocus="true"
+                            android:textSize="@dimen/_12ssp"/>
 
                     <ImageButton
                         android:id="@+id/btnScanPK"
@@ -101,12 +101,12 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:padding="@dimen/_2sdp"
-                            android:text="COIN"
-                            android:textSize="@dimen/_24ssp" />
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:padding="@dimen/_2sdp"
+                                android:text="@string/coin"
+                                android:textSize="@dimen/_24ssp"/>
 
                         <EditText
                             android:id="@+id/txtValue"
@@ -137,12 +137,12 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:padding="@dimen/_2sdp"
-                        android:text="FEE"
-                        android:textSize="@dimen/_18ssp" />
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="@dimen/_2sdp"
+                            android:text="@string/fee"
+                            android:textSize="@dimen/_18ssp"/>
 
                     <EditText
                         android:padding="@dimen/_2sdp"
@@ -167,39 +167,40 @@
                 android:layout_height="wrap_content"
                 app:cardPreventCornerOverlap="true"
                 app:cardUseCompatPadding="true">
-            <EditText
-                android:id="@+id/txtNote"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="5"
-                android:ems="10"
-                android:gravity="left|top"
-                android:hint="Message (Optional)\nIncrease Fee\nMessage is public"
-                android:background="@android:color/white"
-                android:inputType="textMultiLine"
-                android:padding="@dimen/_4sdp"
-                android:lines="4"
-                android:maxLines="4"
-                android:selectAllOnFocus="true"
-                android:textSize="@dimen/_14ssp" />
+
+                <EditText
+                        android:id="@+id/txtNote"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:ems="10"
+                        android:gravity="left|top"
+                        android:hint="@string/send_message"
+                        android:background="@android:color/white"
+                        android:inputType="textMultiLine"
+                        android:padding="@dimen/_4sdp"
+                        android:lines="4"
+                        android:maxLines="4"
+                        android:selectAllOnFocus="true"
+                        android:textSize="@dimen/_14ssp"/>
 
             </androidx.cardview.widget.CardView>
 
             <CheckBox
-                android:id="@+id/offlineSigning"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="Offline transaction signing" />
+                    android:id="@+id/offlineSigning"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/title_offline_transaction"/>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnSend"
-                style="@style/Button.Accent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:text="Calculate Fee"
-                android:textSize="@dimen/_18ssp" />
+                    android:id="@+id/btnSend"
+                    style="@style/Button.Accent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:text="@string/calculate_fee"
+                    android:textSize="@dimen/_18ssp"/>
         </LinearLayout>
 
         <LinearLayout

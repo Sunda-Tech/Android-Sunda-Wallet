@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Sunda Wallet</string>
-
+    <string name="icon_name">Wallet</string>
+    <string name="coin_name">Sunda Coin</string>
+    <string name="coin_scheme" translatable="false">sendsnd</string>
     <string name="app_intro_title_1">Apa itu cryptocurrency?</string>
     <string name="app_intro_description_1">Cryptocurrency (mata uang crypto) adalah sebuah mata uang digital atau virtual yang dirancang sebagai alat tukar. Cryptocurrency menggunakan sistem kriptografi untuk mengamankan dan memverifikasi setiap transaksi. Semua transaksi disimpan di BlockchainCryptocurrency (mata uang crypto) adalah sebuah mata uang digital atau virtual yang dirancang sebagai alat tukar. Cryptocurrency menggunakan sistem kriptografi untuk mengamankan dan memverifikasi setiap transaksi. Semua transaksi disimpan di Blockchain</string>
     <string name="app_intro_title_2">Apa itu BlockChain?</string>
@@ -10,15 +12,186 @@
     <string name="app_intro_title_4">Apa itu Public key?</string>
     <string name="app_intro_description_4">public key merupakan kunci kriptografi yang bisa anda bagikan ke orang lain, digunakan untuk enkripsi data digital, dan bisa dibuka dengan Private key</string>
     <string name="app_intro_title_5">Apa itu Private key?</string>
-    <string name="app_intro_description_5">Private key merupakan kunci kriptografi yang rahasia, hanya anda yang boleh tahu, tidak boleh dibagikan, digunakan untuk membuka data hasil enkripsi dari Public key yang anda bagikan</string>
+    <string name="app_intro_description_5">Private key merupakan kunci kriptografi yang rahasia, hanya anda yang boleh tahu, tidak boleh dibagikan, digunakan untuk menandatangani transaksi secara digital dan mengenkripsi data</string>
     <string name="app_intro_title_6">Apa itu Passphrase?</string>
     <string name="app_intro_description_6">Passphrase pada Cryptocurrency disini merupakan Private key, dan tidak boleh anda bagikan ke orang lain, RAHASIA, atau uang anda di dompet cryptocurrency bisa dicuri</string>
     <string name="app_intro_title_7">Apa itu Biaya transfer (Fee)?</string>
     <string name="app_intro_description_7">Biaya Transfer akan diberikan kepada pencatat Blockchain sebagai upah untuk mencatat ke Blockchain, biasa disebut Miner, penambang bitcoin.</string>
-    <string name="app_intro_title_8">Apa itu Sunda Coin?</string>
-    <string name="app_intro_description_8">Sunda Coin merupakan Cryptocurrency yang dibuat oleh Komunitas Sunda Sunday dari source code Cryptocurrency NXT</string>
-    <string name="app_intro_title_9">Apakah Sunda Coin bernilai?</string>
-    <string name="app_intro_description_9">Sunda Coin bisa bernilai, bisa tidak, tergantung kepercayaan penggunanya, dan apakah sering digunakan sehari hari, saat ini Sunda Coin hanya untuk belajar Cryptocurrency</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_intro_title_8">Apa itu Nux Coin?</string>
+    <string name="app_intro_description_8">Nux Coin merupakan Cryptocurrency yang dibuat oleh iBNuX dari source code Cryptocurrency NXT</string>
+    <string name="app_intro_title_9">Apakah Nux Coin bernilai?</string>
+    <string name="app_intro_description_9">Nux Coin bisa bernilai, bisa tidak, tergantung kepercayaan penggunanya, dan apakah sering digunakan sehari hari, saat ini Nux Coin hanya untuk belajar Cryptocurrency</string>
+    <string name="app_intro_title_10">Apakah Airdrop itu?</string>
+    <string name="app_intro_description_10">Untuk Cryptocurrency yang coinnya sudah dibuat, biasanya akan dibagikan ke pengguna secara cuma-cuma, agar bisa digunakan langsung untuk transaksi, sebagai stimulus awal. Disini kamu bisa gunakan menu Request Airdrop jika ingin saldo cuma-cuma, ajak juga temanmu untuk belajar CryptoCurrency</string>
+
+    <string name="first_wallet_address" translatable="false">-TNHJ-LAC5-7DGL-HR7Y5</string>
+    <string name="first_wallet_name" translatable="false">iBNuX</string>
+    <string name="first_wallet_public_key" translatable="false">0f04b0abc5f2d2518cc7f56ef5225968901bbddadf0531a9c13645457d477860</string>
+    <string name="first_wallet_note">Sang pembuat dompet ini</string>
+
+    <string name="service_notification_title">Next update at %1$s</string>
+    <string name="service_notification_message">Waiting transaction every %1$d minute(s)</string>
+
+    <string name="service_notification_waiting">Waiting for incoming payment</string>
+    <string name="service_notification_button_send">SEND COIN</string>
+
+    <string name="service_notification_checking">Checking %1$s</string>
+    <string name="service_notification_received_title">%1$s send you coin</string>
+    <string name="service_notification_received_message">"Received %1$s NUX for %2$s</string>
+    <string name="service_notification_sending_title">You sent a coin from %1$s</string>
+    <string name="service_notification_sending_message">"%1$s NUX for %2$s has been sent</string>
+
+    <string name="chat">Chat</string>
+
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="sure">Sure</string>
+    <string name="add">Add</string>
+    <string name="delete">Delete</string>
+    <string name="send_now">Send Now</string>
+    <string name="invalid">Invalid</string>
+    <string name="optional">Optional</string>
+    <string name="balance">SND</string>
+    <string name="search">Search</string>
+    <string name="address">Address</string>
+    <string name="passphrase">PassPhrase</string>
+    <string name="public_key">Public Key</string>
+    <string name="encrypted_passphrase">Encrypted PassPhrase</string>
+    <string name="address_public_key">Address + Public Key</string>
+    <string name="share">Share</string>
+    <string name="copy_address">Copy Address</string>
+    <string name="coin">Coin</string>
+    <string name="fee">Fee</string>
+    <string name="scan_qrcode">Scan QRcode</string>
+    <string name="create_wallet">Create Wallet or Input PassPhrase</string>
+    <string name="add_wallet_address">Add new address book</string>
+    <string name="add_wallet_title">Add Wallet</string>
+    <string name="payment_title">payment</string>
+    <string name="scan_wallet">Scan QR Wallet</string>
+    <string name="use_wallet_address">Use wallet address</string>
+    <string name="transaction">Transaction</string>
+    <string name="backup">Backup</string>
+    <string name="restore">Restore</string>
+    <string name="change_pin">Change Pin</string>
+    <string name="peers">Peers</string>
+    <string name="tx_listener">Transaction Listener</string>
+    <string name="faq">FAQ</string>
+    <string name="check_for_update">Check for update</string>
+    <string name="register">Request Airdrop</string>
+
+    <string name="error_decrypting">Failed to decrypt passphrase\nIs PIN valid?\n\n</string>
+    <string name="unknown_qrcode">Unknown QRCode</string>
+    <string name="wallet_address_ask">Wallet Address?</string>
+    <string name="wallet_address_hint">SND-XXXX-XXXX-XXXX-XXXXX</string>
+    <string name="wallet_note">Wallet function</string>
+    <string name="wallet_added">Wallet added</string>
+    <string name="wallet_dont_have">You don\'t have any Wallet</string>
+    <string name="address_not_valid">Address not valid</string>
+    <string name="dont_empty">Don\'t empty</string>
+    <string name="insufficient_funds">insufficient funds, needs %1$s Coin(s)</string>
+
+    <string name="airdrop_title">AIRDROP!!</string>
+    <string name="airdrop_message">"Sending Airdrop now?\nNo Cancel button\n%1$s Coin(s) will be distributed to %2$d Wallet(s)"</string>
+    <string name="airdrop_processing">Processing %1$s</string>
+    <string name="airdrop_failed">Sending Airdrop Failed!!</string>
+    <string name="airdrop_success">Sending Airdrop Success!!</string>
+
+    <string name="failed_signing_offline">Failed to sign transaction\ntry use online signing</string>
+    <string name="title_offline_signing">Offline Signing process</string>
+    <string name="title_offline_transaction">Offline Signing transaction</string>
+
+    <string name="add_peer">Add peer URL?</string>
+    <string name="add_peer_error_nohttp">Must start with http:// or https://, not added</string>
+    <string name="add_peer_error_failed1">Failed to connect to Peer, not added</string>
+    <string name="add_peer_error_failed2">Failed to connect to Peer, not added. %1$s</string>
+    <string name="change_peer">Change Server URL?</string>
+    <string name="peer_hint">https://sunda.club</string>
+    <string name="peer_set_default">Set as default server</string>
+    <string name="peer_success_added">Success %1$d peers added</string>
+
+    <string name="pin_code_title">PIN CODE</string>
+    <string name="pin_create_new">Create New PIN</string>
+    <string name="pin_repeat_new">Repeat New PIN</string>
+    <string name="pin_different_new">PIN DIFFERENT, Please repeat</string>
+    <string name="pin_wrong">WRONG PIN</string>
+    <string name="pin_not_change">PIN Not change</string>
+
+    <string name="qrcode">QRcode</string>
+    <string name="a_copied">%1$s copied!</string>
+    <string name="qrcode_saved">Saved at %1$s</string>
+    <string name="qrcode_failed_saved">Failed to save QRCode</string>
+    <string name="a_public_key_with_address">Public Key with Address\n%1$s</string>
+    <string name="a_public_key">Public Key %1$s</string>
+    <string name="a_secret_passphrase">Secret Passphrase\n%1$s</string>
+    <string name="a_encrypted_secret_assphrase">Secret Passphrase\n%1$s</string>
+    <string name="a_failed_encrypted_secret_assphrase">Failed to encrypt passphrase\n\n%1$s</string>
+    <string name="share_wallet">Share Wallet</string>
+    <string name="share_wallet_failed">Failed to share file\n\n%1$s</string>
+    <string name="failed_save_image">Failed to save image</string>
+    <string name="send_coin">Send SND</string>
+    <string name="calculate_fee">Calculate Fee</string>
+    <string name="checking_fee">Checking Fee…</string>
+    <string name="sending_coin">Sending coin…</string>
+    <string name="sending_coin_failed">Sending Coin Failed!!</string>
+    <string name="sending_coin_success">Sending Coin Success!!\nIt will Show after network finished forging</string>
+    <string name="sending_coin_success_get_tx">Sending Coin Success!!\nGetting transaction detail…</string>
+    <string name="sending_coin_success_no_tx">Sending COIN SUCCESS, but get Transaction failed</string>
+    <string name="failed_get_tx">Failed to get transaction</string>
+
+    <string name="getting_balance">Getting balance…</string>
+    <string name="account_not_registered">Account not registered, need balance to register</string>
+    <string name="failed_to_connect_to_server">Failed to connect to server\n%1$s</string>
+    <string name="ask_wallet_name">Wallet name?</string>
+    <string name="ask_wallet_note">Add note?</string>
+    <string name="ask_delete">Delete it?</string>
+    <string name="ask_are_you_sure">Are You sure?</string>
+    <string name="wallet_saved">Wallet Saved</string>
+    <string name="wallet_not_saved">Wallet not Saved</string>
+    <string name="wallet_no_name">No Name</string>
+    <string name="failed_parsing_data_from_server">Failed to parsing data\n%1$s</string>
+    <string name="add_new_wallet">Add New Wallet</string>
+    <string name="requesting_tx">Requesting transaction…</string>
+    <string name="submit_tx">Submiting transaction…</string>
+    <string name="failed_save_file">Failed to save file\n%1$s</string>
+
+
+    <string name="update_title">Update available</string>
+    <string name="update_message">Update to the latest version available of SUNDA Wallet!</string>
+    <string name="update_github_user" translatable="false">Sunda-Tech</string>
+    <string name="update_github_repo" translatable="false">Android-Sunda-Wallet</string>
+
+    <string name="dialog_tx_interval_title">Interval Check Transaction (Minutes)</string>
+    <string name="dialog_tx_interval_hint">0 to disable interval</string>
+    <string name="dialog_backup_wallet_title">Backup All Wallet</string>
+    <string name="dialog_backup_wallet_message">Wallet will be encrypted with your pin, if you forgot your PIN, you will lost your wallet</string>
+    <string name="dialog_restore_wallet_title">Restore All Wallet</string>
+    <string name="dialog_restore_wallet_message">Wallet encrypted with your pin, when you backup, if you forgot your PIN, you will lost your wallet</string>
+    <string name="backup_finished">finished %1$d wallet saved\n%2$s</string>
+    <string name="folder_not_found">Folder not found!\n\n%1$s</string>
+    <string name="failed_import_file">Failed import file\n\n%1$s</string>
+    <string name="failed_import">Failed to import\n\n%1$s</string>
+    <string name="success_import_wallet">finished import wallet</string>
+    <string name="send_message">Message (Optional)\nIncrease Fee\nMessage is public\nMore message more Fee</string>
+    <string name="send_airdrop">Send Airdrop</string>
+    <string name="my_wallet">My Wallet</string>
+    <string name="address_book">Address Book</string>
+    <string name="recipient_field_hint">SND-ADDRESS-RECIPIENTS</string>
+    <string name="recipient_public_key">PublicKey recipient (Optional)</string>
+    <string name="share_subject">Yuk urang make Sunda Coin</string>
+    <string name="share_using">Bagikan menggunakan</string>
+    <string name="share_body">Yuk make Sunda Coin di https://sunda.club</string>
+    <string name="copy_public_key">Copy Public Key</string>
+    <string name="copy_private_key">Copy Private Key</string>
+    <string name="warning_forgot_pin">If you forgot your PIN, you will lost all data</string>
+
+    <string name="dialog_warning_title">WARNING!!</string>
+    <string name="dialog_warning_body">Private key is private, don\'t share to anyone, Copying just for Backup, and backup in secure place, write it down in paper or anything</string>
+
+    <string name="dialog_share_referral_title">Simulasi Referral Link</string>
+    <string name="dialog_share_referral_body">Dapatkan tambahan coin dengan mengajak teman kamu menggunakan Sunda Coin.\nReferral: %1$s</string>
+    <string name="dialog_share_referral_text">Yuk urang make Sunda Coin, unduh di: %1$s</string>
+    <string name="dialog_share_referral_url" translatable="false">https://airdrop.sunda.club/?wallet=%1$s</string>
+    <string name="dialog_share_warning">Hanya untuk dompet sendiri, buka dompet anda</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>

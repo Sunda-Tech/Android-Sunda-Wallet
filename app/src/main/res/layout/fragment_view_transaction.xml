@@ -8,12 +8,13 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="TRANSACTION"
-            android:textAlignment="center"
-            android:textSize="@dimen/_16sdp"
-            android:textStyle="bold" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/transaction"
+                android:textAlignment="center"
+                android:textSize="@dimen/_16sdp"
+                android:textStyle="bold"
+                android:textAllCaps="true"/>
 
         <TableLayout
             android:id="@+id/tabel"

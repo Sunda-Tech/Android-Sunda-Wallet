@@ -10,10 +10,8 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.StrictMode;
-
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
-
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.ANResponse;
 import com.androidnetworking.common.Priority;
@@ -21,16 +19,11 @@ import com.google.gson.Gson;
 import com.ibnux.nuxwallet.Aplikasi;
 import com.ibnux.nuxwallet.Constants;
 import com.ibnux.nuxwallet.R;
-import com.ibnux.nuxwallet.data.Dompet;
-import com.ibnux.nuxwallet.data.Dompet_;
-import com.ibnux.nuxwallet.data.ObjectBox;
-import com.ibnux.nuxwallet.data.Transaksi;
-import com.ibnux.nuxwallet.data.Transaksi_;
+import com.ibnux.nuxwallet.data.*;
 import com.ibnux.nuxwallet.ui.HomeActivity;
 import com.ibnux.nuxwallet.ui.SendMoneyActivity;
 import com.ibnux.nuxwallet.ui.ViewWalletActivity;
 import com.ibnux.nuxwallet.utils.Utils;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -53,12 +46,8 @@ public class BackgroundService extends Service {
         if (notificationManager == null)
             notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
-        int txtime = Aplikasi.sp.getInt("defaultTxTimeListener", Constants.defaultTxTimeListener);
-//        if(txtime==0){
-//            return;
-//        }
-        sendNotification("Next update at "+nextUpdate(),
-                "Waiting transaction every "+txtime+" minute(s)");
+        sendNotification(getString(R.string.service_notification_title,nextUpdate()),
+                getString(R.string.service_notification_message,Aplikasi.sp.getInt("defaultTxTimeListener", Constants.defaultTxTimeListener)));
         startCheck();
     }
 
@@ -89,8 +78,8 @@ public class BackgroundService extends Service {
             pos = 0;
             checkTransactions(data.alamat);
         }
-        sendNotification("Next update at "+nextUpdate(),
-                "Waiting transaction every "+Aplikasi.sp.getInt("defaultTxTimeListener", Constants.defaultTxTimeListener)+" minute(s)");
+        sendNotification(getString(R.string.service_notification_title,nextUpdate()),
+                getString(R.string.service_notification_message,Aplikasi.sp.getInt("defaultTxTimeListener", Constants.defaultTxTimeListener)));
         startCheck();
     }
 
@@ -115,11 +104,10 @@ public class BackgroundService extends Service {
                     if(jml>0) {
                         int ada = 0;
                         for (int n = 0; n < jml; n++) {
-                            //TODO delete log
                             Utils.log(transactions.getJSONObject(n).toString());
                             JSONObject json = transactions.getJSONObject(n);
                             Transaksi tx = new Gson().fromJson(json.toString(),Transaksi.class);
-                            sendNotification(alamat, "Checking "+tx.transaction);
+                            sendNotification(alamat, getString(R.string.service_notification_checking,tx.transaction));
                             if(ObjectBox.getTransaksi().query().equal(Transaksi_.transaction,tx.transaction).build().findFirst()==null) {
                                 tx.timestampInsert = System.currentTimeMillis();
                                 if (json.has("attachment")) {
@@ -132,8 +120,8 @@ public class BackgroundService extends Service {
                                 intent.putExtra("transaction",tx.transaction);
                                 if((tx.recipientRS.equals(alamat))) {
                                     Utils.sendNotification(
-                                            ObjectBox.getNamaDompet(tx.senderRS) + " ngirim artos",
-                                            "Meunang " + tx.amountNQT + " SND ti si " + ObjectBox.getNamaDompet(tx.recipientRS),
+                                            getString(R.string.service_notification_received_title,ObjectBox.getNamaDompet(tx.senderRS)),
+                                            getString(R.string.service_notification_received_message, tx.amountNQT, ObjectBox.getNamaDompet(tx.recipientRS)),
                                             intent,
                                             "transaction",
                                             "Transaction"
@@ -141,8 +129,8 @@ public class BackgroundService extends Service {
                                     );
                                 }else{
                                     Utils.sendNotification(
-                                            "Ngirim "+ObjectBox.getNamaDompet(tx.senderRS),
-                                             tx.amountNQT + " SND ka " + ObjectBox.getNamaDompet(tx.recipientRS)+ " tos dikirim",
+                                            getString(R.string.service_notification_sending_title,ObjectBox.getNamaDompet(tx.senderRS)),
+                                             getString(R.string.service_notification_sending_message,tx.amountNQT, ObjectBox.getNamaDompet(tx.recipientRS)),
                                             intent,
                                             "transaction",
                                             "Transaction"
@@ -224,7 +212,7 @@ public class BackgroundService extends Service {
         Utils.log("BGServicesSendNotification");
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(Aplikasi.app);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            int importance = NotificationManager.IMPORTANCE_NONE;
             NotificationChannel channel = new NotificationChannel("TxListener", "Transaction Listener", importance);
             notificationManager.createNotificationChannel(channel);
         }
@@ -234,14 +222,14 @@ public class BackgroundService extends Service {
                 .setSmallIcon(R.drawable.ic_notification)
                 .setLargeIcon(BitmapFactory.decodeResource(Aplikasi.app.getResources(),R.mipmap.ic_launcher))
                 .setContentTitle((title==null)?Aplikasi.app.getString(R.string.app_name):title)
-                .setContentText((description==null)?"Waiting for incoming payment":description)
+                .setContentText((description==null)? getString(R.string.service_notification_waiting) :description)
                 .setOngoing(true)
                 .setContentIntent(PendingIntent.getActivity(this,0,
                         new Intent(this, HomeActivity.class),PendingIntent.FLAG_CANCEL_CURRENT))
-                .addAction(R.drawable.ic_send,"Ngirim Artos",
+                .addAction(R.drawable.ic_send,getString(R.string.service_notification_button_send),
                         PendingIntent.getActivity(this,0, intent
                                 ,PendingIntent.FLAG_CANCEL_CURRENT))
-                .setPriority(NotificationCompat.PRIORITY_LOW);
+                .setPriority(NotificationCompat.PRIORITY_MIN);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             startForeground(42689,builder.build());
         }else {

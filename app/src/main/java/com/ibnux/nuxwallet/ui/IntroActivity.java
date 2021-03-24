@@ -2,9 +2,7 @@ package com.ibnux.nuxwallet.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import com.github.appintro.AppIntro;
 import com.github.appintro.AppIntroFragment;
 import com.ibnux.nuxwallet.Aplikasi;
@@ -60,6 +58,12 @@ public class IntroActivity extends AppIntro {
                 getString(R.string.app_intro_title_9),
                 getString(R.string.app_intro_description_9),
                 R.drawable.nuxcoin
+        ));
+
+        addSlide(AppIntroFragment.newInstance(
+                getString(R.string.app_intro_title_10),
+                getString(R.string.app_intro_description_10),
+                R.drawable.airdrop_crypto
         ));
     }
 

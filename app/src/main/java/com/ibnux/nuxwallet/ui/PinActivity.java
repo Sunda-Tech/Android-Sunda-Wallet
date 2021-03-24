@@ -13,10 +13,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.ibnux.nuxwallet.Aplikasi;
+import com.ibnux.nuxwallet.R;
 import com.ibnux.nuxwallet.databinding.ActivityPinBinding;
 import com.ibnux.nuxwallet.utils.Utils;
 
@@ -31,10 +30,10 @@ public class PinActivity extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         binding = ActivityPinBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        setTitle("Personal Identipication Number");
+        setTitle(R.string.pin_code_title);
         String pin = Aplikasi.getPin();
         if (pin == null) {
-            binding.txtInfo.setText("PIN ANYAR!!");
+            binding.txtInfo.setText(R.string.pin_create_new);
             isNew = true;
         }
         binding.button.setOnClickListener(this);
@@ -45,7 +44,7 @@ public class PinActivity extends AppCompatActivity implements View.OnClickListen
         if(isNew){
             if(pinnew==null){
                 pinnew = binding.inputPin.getText().toString();
-                binding.txtInfo.setText("ASUPKEUN DEUI PIN NU TADI");
+                binding.txtInfo.setText(R.string.pin_repeat_new);
                 binding.inputPin.setText("");
                 Utils.vibrate();
             }else{
@@ -57,8 +56,8 @@ public class PinActivity extends AppCompatActivity implements View.OnClickListen
                     finish();
                 }else{
                     Utils.vibrate();
-                    Utils.showToast("PIN TEU SARUA, COBIAN DEUI",this);
-                    binding.txtInfo.setText("NGAJIEUN PIN");
+                    Utils.showToast(R.string.pin_different_new,this);
+                    binding.txtInfo.setText(R.string.pin_create_new);
                     binding.inputPin.setText("");
                     pinnew = null;
                 }
@@ -71,7 +70,7 @@ public class PinActivity extends AppCompatActivity implements View.OnClickListen
                 finish();
             }else{
                 Utils.vibrate();
-                Utils.showToast("PIN SALAH EUY",this);
+                Utils.showToast(R.string.pin_wrong,this);
                 binding.inputPin.setText("");
                 pinnew = null;
             }

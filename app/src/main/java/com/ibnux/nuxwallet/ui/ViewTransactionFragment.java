@@ -6,9 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TextView;
-
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.gson.Gson;
+import com.ibnux.nuxwallet.Aplikasi;
 import com.ibnux.nuxwallet.R;
 import com.ibnux.nuxwallet.data.ObjectBox;
 import com.ibnux.nuxwallet.data.Transaksi;
@@ -16,7 +16,6 @@ import com.ibnux.nuxwallet.data.Transaksi_;
 import com.ibnux.nuxwallet.utils.JsonCallback;
 import com.ibnux.nuxwallet.utils.NuxCoin;
 import com.ibnux.nuxwallet.utils.Utils;
-
 import org.json.JSONObject;
 
 import java.util.Iterator;
@@ -70,8 +69,13 @@ public class ViewTransactionFragment extends BottomSheetDialogFragment {
                 String key = i.next();
                 View item = inflater.inflate(R.layout.item_tx, container, false);
                 ((TextView)item.findViewById(R.id.txtKey)).setText(key);
-                if(key.equals("amountNQT") || key.equals("feeNQT")){
-                    ((TextView)item.findViewById(R.id.txtValue)).setText(Utils.nuxFormat(json.getLong(key)));
+                if(key.equals("amountNQT") || key.equals("feeNQT")) {
+                    ((TextView) item.findViewById(R.id.txtValue)).setText(Utils.nuxFormat(json.getLong(key)));
+                }else if(key.equals("blockTimestamp") || key.equals("timestamp")){
+                    long time = Aplikasi.unixtime + (json.getLong(key)*1000L);
+                    ((TextView) item.findViewById(R.id.txtValue)).setText(Utils.toDate(time,"all"));
+                }else if(key.equals("timestampInsert")){
+                    ((TextView) item.findViewById(R.id.txtValue)).setText(Utils.toDate(json.getLong(key),"all"));
                 }else
                     ((TextView)item.findViewById(R.id.txtValue)).setText(json.getString(key));
                 tabel.addView(item);

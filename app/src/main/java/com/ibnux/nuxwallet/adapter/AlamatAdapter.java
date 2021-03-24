@@ -8,10 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import com.ibnux.nuxwallet.data.Dompet;
 import com.ibnux.nuxwallet.data.Dompet_;
 import com.ibnux.nuxwallet.data.ObjectBox;

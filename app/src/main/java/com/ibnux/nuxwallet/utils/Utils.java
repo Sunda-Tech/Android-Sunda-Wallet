@@ -24,10 +24,8 @@ import android.util.Log;
 import android.view.Gravity;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
-
 import com.google.gson.Gson;
 import com.ibnux.nuxwallet.Aplikasi;
 import com.ibnux.nuxwallet.BuildConfig;
@@ -37,15 +35,7 @@ import com.ibnux.nuxwallet.data.Dompet;
 import com.ibnux.nuxwallet.kripto.Curve25519;
 import com.scottyab.aescrypt.AESCrypt;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.lang.reflect.Array;
 import java.security.MessageDigest;
 import java.text.DecimalFormat;
@@ -240,24 +230,26 @@ public class Utils {
 
     public static void log(Object txt){
         if(!BuildConfig.DEBUG) return;
-        Log.d("SND","-----------------------");
-        Log.d("SND",txt+"");
-        Log.d("SND","-----------------------");
+        Log.d(Constants.currency,"-----------------------");
+        Log.d(Constants.currency,txt+"");
+        Log.d(Constants.currency,"-----------------------");
     }
 
     public static String nuxFormat(long myNumber){
+        log("nuxFormat: "+myNumber);
         DecimalFormatSymbols dfs = DecimalFormatSymbols.getInstance();
         NumberFormat formatter = new DecimalFormat("#,###");
         String strNumber = String.valueOf(myNumber);
         String result = "";
         result = formatter.format(myNumber);
+        log("nuxFormat Result: "+result);
         return result;
     }
 
     // d m y h i s full
     public static String toDate(long milliSeconds, String format)
     {
-        log("toDate "+milliSeconds+" "+format);
+//        log("toDate "+milliSeconds+" "+format);
         TimeZone timeZone = TimeZone.getTimeZone("UTC");
         Calendar cal = Calendar.getInstance(timeZone);
         cal.setTimeInMillis(milliSeconds);
@@ -270,9 +262,10 @@ public class Utils {
             case "Y" : hasil = String.valueOf(cal.get(Calendar.YEAR)); break;
             case "h" : hasil = String.valueOf(cal.get(Calendar.HOUR)); break;
             case "H" : hasil = String.valueOf(cal.get(Calendar.HOUR_OF_DAY)); break;
-            case "i" : hasil = String.valueOf(cal.get(Calendar.MINUTE)); break;
+            case "H:i" : hasil = String.format("%02d:%02d", cal.get(Calendar.HOUR_OF_DAY),cal.get(Calendar.MINUTE)); break;
+            case "i" : hasil = String.format("%02d", cal.get(Calendar.MINUTE)); break;
             default: hasil = cal.get(Calendar.DAY_OF_MONTH)+"/"+(cal.get(Calendar.MONTH)+1)+"/"+cal.get(Calendar.YEAR)+" "
-                    +cal.get(Calendar.HOUR_OF_DAY)+":"+cal.get(Calendar.MINUTE);
+                    +String.format("%02d:%02d",cal.get(Calendar.HOUR_OF_DAY),cal.get(Calendar.MINUTE));
         }
         if(hasil.length()==1)
             return "0"+hasil;
@@ -289,6 +282,12 @@ public class Utils {
 
     public static void showToast(String pesan, Context cx){
         Toast t =Toast.makeText(cx,pesan,Toast.LENGTH_LONG);
+        t.setGravity(Gravity.CENTER,0,0);
+        t.show();
+    }
+
+    public static void showToast(int resid, Context cx){
+        Toast t =Toast.makeText(cx,resid,Toast.LENGTH_LONG);
         t.setGravity(Gravity.CENTER,0,0);
         t.show();
     }
@@ -310,7 +309,7 @@ public class Utils {
         final ProgressBar progressBar = new ProgressBar(cx);
         progressBar.setIndeterminate(true);
         builder.setView(progressBar);
-        builder.setNegativeButton("Cancel",null);
+        builder.setNegativeButton(cx.getString(R.string.cancel),null);
         builder.setCancelable(false);
         return builder;
     }
@@ -334,14 +333,14 @@ public class Utils {
     }
 
     public static boolean saveToFile(Dompet dompet, String pin,Context cx){
-        String filename = dompet.alamat.replace("-","_") + ".sunda";
+        String filename = dompet.alamat.replace("-","_") + "."+Constants.currency.toLowerCase();
         Gson gson = new Gson();
         OutputStream fos;
         String json = gson.toJson(dompet);
         try {
             json = AESCrypt.encrypt(pin, json);
         }catch (Exception e){
-            Toast.makeText(cx, "Failed to save file\n\n"+e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(cx, cx.getString(R.string.failed_save_file,e.getMessage()), Toast.LENGTH_SHORT).show();
             return false;
         }
         try{
@@ -362,7 +361,7 @@ public class Utils {
             fos.close();
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(cx, "Failed to save file\n\n"+e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(cx, cx.getString(R.string.failed_save_file,e.getMessage()), Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -375,7 +374,6 @@ public class Utils {
             NotificationChannel channel = new NotificationChannel(channel_id, channel_name, importance);
             notificationManager.createNotificationChannel(channel);
         }
-
 
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(Aplikasi.app, channel_id)

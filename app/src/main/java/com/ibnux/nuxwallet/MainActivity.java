@@ -12,9 +12,7 @@ package com.ibnux.nuxwallet;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.ibnux.nuxwallet.ui.HomeActivity;
 import com.ibnux.nuxwallet.ui.IntroActivity;
 

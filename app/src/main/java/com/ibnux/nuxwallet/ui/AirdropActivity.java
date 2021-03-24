@@ -14,13 +14,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
 import com.ibnux.nuxwallet.Aplikasi;
+import com.ibnux.nuxwallet.Constants;
 import com.ibnux.nuxwallet.R;
 import com.ibnux.nuxwallet.adapter.DompetSpinnerAdapter;
 import com.ibnux.nuxwallet.adapter.TransaksiAirdropAdapter;
@@ -32,7 +31,6 @@ import com.ibnux.nuxwallet.databinding.ActivityAirdropBinding;
 import com.ibnux.nuxwallet.utils.JsonCallback;
 import com.ibnux.nuxwallet.utils.NuxCoin;
 import com.ibnux.nuxwallet.utils.Utils;
-
 import org.json.JSONObject;
 
 import java.util.List;
@@ -65,7 +63,7 @@ public class AirdropActivity extends AppCompatActivity {
         binding.spinnerWallet.setAdapter(adapterSpinner);
 
         if(adapterSpinner.getCount()==0){
-            Utils.showToast("You don't have any Wallet", this);
+            Utils.showToast(R.string.wallet_dont_have, this);
             finish();
         }
         binding.spinnerWallet.setSelection(0);
@@ -95,24 +93,24 @@ public class AirdropActivity extends AppCompatActivity {
     }
 
     public void prosesNomor(){
-        binding.txtStatus2.setText((pos+1)+" ti "+dompets.size()+" tos dikirim");
+        binding.txtStatus2.setText((pos+1)+" from "+dompets.size()+" address processed");
     }
 
     public void checkData(){
         if(binding.txtValue.getText().toString().isEmpty()) {
-            binding.txtValue.setError("Don not empty");
+            binding.txtValue.setError(getString(R.string.dont_empty));
             return;
         }
         int jml = Integer.parseInt(binding.txtValue.getText().toString())*dompets.size();
         if(jml>dompetSelected.saldo){
-            Utils.showToast("Teu boga artos, butuhna "+Utils.nuxFormat(jml)+" SND", AirdropActivity.this);
+            Utils.showToast(getString(R.string.insufficient_funds, Utils.nuxFormat(jml)), AirdropActivity.this);
             return;
         }
         new AlertDialog.Builder(this)
                 .setIcon(R.mipmap.ic_launcher)
-                .setTitle("Bagi bagi duit!!")
-                .setMessage("Bagi bagi duit tah??\nTeu bisa dibatalkeun\n"+Utils.nuxFormat(jml)+" SND bakal dikirim ka "+dompets.size()+" dompet")
-                .setPositiveButton("Sure", new DialogInterface.OnClickListener() {
+                .setTitle(R.string.airdrop_title)
+                .setMessage(getString(R.string.airdrop_message,Utils.nuxFormat(jml),dompets.size()))
+                .setPositiveButton(R.string.sure, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         pos = 0;
@@ -126,7 +124,7 @@ public class AirdropActivity extends AppCompatActivity {
                         startAirdrop();
                     }
                 })
-                .setNegativeButton("Batalkeun", null)
+                .setNegativeButton(R.string.cancel, null)
                 .show();
     }
 
@@ -134,18 +132,18 @@ public class AirdropActivity extends AppCompatActivity {
         prosesNomor();
         isStarted = true;
         dompetTarget = dompets.get(pos);
-        binding.txtStatus2.setText("Keuur ngirim ka "+dompetTarget.alamat);
+        binding.txtStatus2.setText(getString(R.string.airdrop_processing,dompetTarget.alamat));
 
         if(binding.offlineSigning.isChecked()){
             NuxCoin.sendCoin(dompetSelected, dompetTarget.alamat, binding.txtValue.getText().toString(),
-                    "500", binding.txtNote.getText().toString(), dompetTarget.publicKey, null, new JsonCallback() {
+                    String.valueOf(Constants.default_fee), binding.txtNote.getText().toString(), dompetTarget.publicKey, null, new JsonCallback() {
                         @Override
                         public void onJsonCallback(JSONObject jsonObject) {
                             try {
                                 if (jsonObject.has("unsignedTransactionBytes")) {
                                     signingTX(jsonObject.getString("unsignedTransactionBytes"), dompetSelected.secretPhrase);
                                 } else {
-                                    Utils.showToast("Bagi bagi duit gagal!!", AirdropActivity.this);
+                                    Utils.showToast(R.string.airdrop_failed, AirdropActivity.this);
                                 }
                             } catch (Exception e) {
                                 Utils.showToast(e.getMessage(), AirdropActivity.this);
@@ -159,7 +157,7 @@ public class AirdropActivity extends AppCompatActivity {
                     });
         }else {
             NuxCoin.sendCoinOnline(dompetSelected, dompetTarget.alamat, binding.txtValue.getText().toString(),
-                    "500", binding.txtNote.getText().toString(), dompetTarget.publicKey,
+                    String.valueOf(Constants.default_fee), binding.txtNote.getText().toString(), dompetTarget.publicKey,
                     null, new JsonCallback() {
                         @Override
                         public void onJsonCallback(JSONObject jsonObject) {
@@ -176,7 +174,7 @@ public class AirdropActivity extends AppCompatActivity {
                                     adapter.addTX(tx);
                                     lanjutNext();
                                 }else{
-                                    Utils.showToast("Bagi bagi duit gagal!!", AirdropActivity.this);
+                                    Utils.showToast(R.string.airdrop_failed, AirdropActivity.this);
                                 }
                             }catch (Exception e){
                                 Utils.showToast(e.getMessage(), AirdropActivity.this);
@@ -206,7 +204,7 @@ public class AirdropActivity extends AppCompatActivity {
             binding.txtStatus2.setVisibility(View.GONE);
             binding.layoutForm.setVisibility(View.VISIBLE);
             Utils.vibrate();
-            Utils.showToast("Bagi bagi duit geus beres", AirdropActivity.this);
+            Utils.showToast(R.string.airdrop_success, AirdropActivity.this);
             isStarted = false;
         }
     }
@@ -240,7 +238,7 @@ public class AirdropActivity extends AppCompatActivity {
                                     adapter.addTX(tx);
                                     lanjutNext();
                                 } else {
-                                    Utils.showToast("Bagi bagi duit gagal euy!!", AirdropActivity.this);
+                                    Utils.showToast(R.string.airdrop_failed, AirdropActivity.this);
                                 }
                             } catch (Exception e) {
                                 Utils.showToast(e.getMessage(), AirdropActivity.this);
@@ -253,10 +251,10 @@ public class AirdropActivity extends AppCompatActivity {
                         }
                     });
                 else
-                    Utils.showToast("Gagal nanda tangan euy\nMake online wae coba", this);
+                    Utils.showToast(R.string.failed_signing_offline, this);
             }
         }else{
-            Utils.showToast("Gagal nanda tangan euy\nMake online wae coba", this);
+            Utils.showToast(R.string.failed_signing_offline, this);
         }
     }
 

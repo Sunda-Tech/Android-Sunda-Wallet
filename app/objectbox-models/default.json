@@ -73,7 +73,9 @@
         {
           "id": "7:5242268826725823397",
           "name": "transaction",
-          "type": 9
+          "indexId": "2:1249698751297210171",
+          "type": 9,
+          "flags": 2080
         },
         {
           "id": "8:3612559109600712927",
@@ -208,13 +210,15 @@
     }
   ],
   "lastEntityId": "3:7832986057374004893",
-  "lastIndexId": "0:0",
+  "lastIndexId": "2:1249698751297210171",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
   "modelVersionParserMinimum": 5,
   "retiredEntityUids": [],
-  "retiredIndexUids": [],
+  "retiredIndexUids": [
+    7676976934321020602
+  ],
   "retiredPropertyUids": [
     4075702584282500215,
     8998673703433693126,

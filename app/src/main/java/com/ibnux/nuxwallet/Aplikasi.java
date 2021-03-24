@@ -12,13 +12,10 @@ package com.ibnux.nuxwallet;
 
 import android.content.SharedPreferences;
 import android.os.StrictMode;
-
 import androidx.multidex.MultiDexApplication;
-
+import cat.ereza.customactivityoncrash.config.CaocConfig;
 import com.androidnetworking.AndroidNetworking;
 import com.ibnux.nuxwallet.data.ObjectBox;
-
-import cat.ereza.customactivityoncrash.config.CaocConfig;
 
 public class Aplikasi extends MultiDexApplication {
     public static SharedPreferences sp;

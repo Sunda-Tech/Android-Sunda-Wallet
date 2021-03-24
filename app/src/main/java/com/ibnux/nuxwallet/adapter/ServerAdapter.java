@@ -13,11 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.ibnux.nuxwallet.Constants;
 import com.ibnux.nuxwallet.R;
 import com.ibnux.nuxwallet.data.ObjectBox;

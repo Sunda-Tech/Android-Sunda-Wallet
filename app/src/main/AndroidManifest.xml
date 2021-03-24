@@ -1,94 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ibnux.nuxwallet">
+          package="com.ibnux.nuxwallet">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application
-        android:name=".Aplikasi"
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:requestLegacyExternalStorage="true"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".ui.AirdropActivity"></activity>
+            android:name=".Aplikasi"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:requestLegacyExternalStorage="true"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme"
+            android:usesCleartextTraffic="true">
+        <activity android:name=".ui.WebViewActivity"
+                  android:theme="@style/noTitleTheme">
+        </activity>
+        <activity android:name=".ui.AirdropRequestActivity">
+        </activity>
+        <activity android:name=".ui.AirdropActivity"/>
 
         <receiver
-            android:name=".layanan.BootReceiver"
-            android:enabled="true"
-            android:exported="true">
+                android:name=".layanan.BootReceiver"
+                android:enabled="true"
+                android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
 
-        <service android:name=".layanan.BackgroundService" />
+        <service android:name=".layanan.BackgroundService"/>
 
         <activity
-            android:name=".ui.OfflineSigningActivity"
-            android:screenOrientation="portrait" />
+                android:name=".ui.OfflineSigningActivity"
+                android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.IntroActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/noTitleTheme" />
+                android:name=".ui.IntroActivity"
+                android:screenOrientation="portrait"
+                android:theme="@style/noTitleTheme"/>
         <activity
-            android:name=".ui.PeersActivity"
-            android:screenOrientation="portrait" />
+                android:name=".ui.PeersActivity"
+                android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.ScanActivity"
-            android:screenOrientation="portrait" />
+                android:name=".ui.ScanActivity"
+                android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.QRCodeActivity"
-            android:screenOrientation="portrait" />
+                android:name=".ui.QRCodeActivity"
+                android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.PinActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/noTitleTheme" />
+                android:name=".ui.PinActivity"
+                android:screenOrientation="portrait"
+                android:theme="@style/noTitleTheme"/>
         <activity
-            android:name=".ui.ViewWalletActivity"
-            android:screenOrientation="portrait" />
+                android:name=".ui.ViewWalletActivity"
+                android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.SendMoneyActivity"
-            android:screenOrientation="portrait">
-            <intent-filter android:label="Kirim Artos">
-                <action android:name="android.intent.action.VIEW" />
+                android:name=".ui.SendMoneyActivity"
+                android:screenOrientation="portrait">
+            <intent-filter android:label="@string/send_coin">
+                <action android:name="android.intent.action.VIEW"/>
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
                 <!--
                 Accepts URIs that begin with "nux://send”
-                nux://send/ADDRESS/AMOUNT
-                nux://send/NUX-1224-2121/20
+                coin_scheme://send/ADDRESS/AMOUNT
+                coin_scheme://send/NUX-1224-2121/20
                 or without ammount
-                nux://send/NUX-1224-2121
+                coin_scheme://send/NUX-1224-2121
                 -->
                 <data
-                    android:host="kirim"
-                    android:scheme="artos" />
+                        android:host="send"
+                        android:scheme="@string/coin_scheme"/>
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.WalletGeneratorActivity"
-            android:screenOrientation="portrait" />
+                android:name=".ui.WalletGeneratorActivity"
+                android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.HomeActivity"
-            android:screenOrientation="portrait" />
+                android:name=".ui.HomeActivity"
+                android:theme="@style/HomeTheme"
+                android:screenOrientation="portrait"/>
         <activity
-            android:name=".MainActivity"
-            android:label="Dompet Sunda"
-            android:screenOrientation="portrait"
-            android:theme="@style/SplashTheme">
+                android:name=".MainActivity"
+                android:label="@string/icon_name"
+                android:screenOrientation="portrait"
+                android:theme="@style/SplashTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
     </application>

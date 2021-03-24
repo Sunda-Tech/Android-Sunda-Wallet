@@ -35,16 +35,16 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/txtWallet"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_medium"
-                    android:layout_weight="1"
-                    android:fontFamily="monospace"
-                    android:text="NUX-1234-1234-1234-12345"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/_14ssp" />
+                        android:id="@+id/txtWallet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_medium"
+                        android:layout_weight="1"
+                        android:fontFamily="monospace"
+                        android:text="@string/wallet_address_hint"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/_14ssp"/>
 
                 <ImageView
                     android:id="@+id/card_logo"
@@ -107,26 +107,26 @@
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnSend"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="0dp"
-            android:text="SEND COIN"
-            android:theme="@style/Button.Accent" />
+                android:id="@+id/btnSend"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="0dp"
+                android:text="@string/send_coin"
+                android:theme="@style/Button.Accent"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnBarcode"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="0dp"
-            android:text="BARCODE"
-            android:theme="@style/Button.Accent" />
+                android:id="@+id/btnBarcode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="0dp"
+                android:text="@string/qrcode"
+                android:theme="@style/Button.Accent"/>
     </LinearLayout>
 
     <ProgressBar

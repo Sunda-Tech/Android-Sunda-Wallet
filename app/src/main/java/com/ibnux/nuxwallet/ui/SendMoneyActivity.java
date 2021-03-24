@@ -15,10 +15,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.ibnux.nuxwallet.Aplikasi;
 import com.ibnux.nuxwallet.R;
 import com.ibnux.nuxwallet.adapter.AlamatAdapter;
@@ -30,7 +28,6 @@ import com.ibnux.nuxwallet.utils.JsonCallback;
 import com.ibnux.nuxwallet.utils.LongCallback;
 import com.ibnux.nuxwallet.utils.NuxCoin;
 import com.ibnux.nuxwallet.utils.Utils;
-
 import org.json.JSONObject;
 
 public class SendMoneyActivity extends AppCompatActivity implements View.OnClickListener {
@@ -42,24 +39,25 @@ public class SendMoneyActivity extends AppCompatActivity implements View.OnClick
     boolean isSending = false;
     String transaction;
     AlamatAdapter alamatAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivitySendMoneyBinding.inflate(getLayoutInflater());
-        setTitle("Ngirim Artos");
         setContentView(binding.getRoot());
+        setTitle(R.string.send_coin);
 
         adapter = new DompetSpinnerAdapter(this, R.layout.item_dompet);
         binding.spinnerWallet.setAdapter(adapter);
 
         if(adapter.getCount()==0){
-            Utils.showToast("Can boga dompet euy! nyieun heula", this);
+            Utils.showToast(R.string.wallet_dont_have, this);
             finish();
         }
 
         Intent i = getIntent();
         if(i.getData()!=null) {
-            //dari url
+            //TODO dari url
         }else if(i.hasExtra("from")){
             from = i.getStringExtra("from");
             binding.spinnerWallet.setSelection(adapter.getPosition(from));
@@ -146,7 +144,7 @@ public class SendMoneyActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 isDoneChekFee = false;
-                binding.btnSend.setText("Cek Jatah Preman");
+                binding.btnSend.setText(R.string.calculate_fee);
             }
 
             @Override
@@ -160,19 +158,19 @@ public class SendMoneyActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 isDoneChekFee = false;
-                binding.btnSend.setText("Cek Jatah Preman");
+                binding.btnSend.setText(R.string.calculate_fee);
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 isDoneChekFee = false;
-                binding.btnSend.setText("Cek Jatah Preman");
+                binding.btnSend.setText(R.string.calculate_fee);
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 isDoneChekFee = false;
-                binding.btnSend.setText("Cek Jatah Preman");
+                binding.btnSend.setText(R.string.calculate_fee);
             }
         });
     }
@@ -184,7 +182,7 @@ public class SendMoneyActivity extends AppCompatActivity implements View.OnClick
                 Utils.log("cekFee: "+string);
                 binding.txtFee.setText(String.valueOf(string));
                 isDoneChekFee = true;
-                binding.btnSend.setText("Kirim artosna");
+                binding.btnSend.setText(R.string.send_now);
                 binding.layoutStatus.setVisibility(View.GONE);
             }
 
@@ -227,18 +225,18 @@ public class SendMoneyActivity extends AppCompatActivity implements View.OnClick
             startActivityForResult(new Intent(this, ScanActivity.class), 2346);
         }else if(v==binding.btnSend){
             if(binding.txtAlamat.getText().length()!=24){
-                binding.txtAlamat.setError("Invalid");
+                binding.txtAlamat.setError(getString(R.string.invalid));
                 binding.txtAlamat.requestFocus();
                 return;
             }
             if(binding.txtValue.getText().length()==0){
-                binding.txtValue.setError("Invalid");
+                binding.txtValue.setError(getString(R.string.invalid));
                 binding.txtValue.requestFocus();
                 return;
             }
-            if(binding.btnSend.getText().toString().toLowerCase().equals("calculate fee")){
+            if(!isDoneChekFee){
                 binding.layoutStatus.setVisibility(View.VISIBLE);
-                binding.txtStatus.setText("Cek heula jatah premanna...");
+                binding.txtStatus.setText(R.string.checking_fee);
                 cekFee();
             }else{
                 startActivityForResult(new Intent(this,PinActivity.class), 4268);
@@ -259,7 +257,7 @@ public class SendMoneyActivity extends AppCompatActivity implements View.OnClick
     }
 
     public void signingTX(String unsignedTransactionBytes, String secretPhrase){
-        binding.txtStatus.setText("Tanda tangan Oppline");
+        binding.txtStatus.setText(R.string.title_offline_transaction);
         Intent intent = new Intent(Aplikasi.app, OfflineSigningActivity.class);
         intent.putExtra("utb",unsignedTransactionBytes);
         intent.putExtra("secret",secretPhrase);
@@ -273,7 +271,7 @@ public class SendMoneyActivity extends AppCompatActivity implements View.OnClick
             if(resultCode==RESULT_OK) {
                 if (data.hasExtra("SUKSES")) {
                     binding.layoutStatus.setVisibility(View.VISIBLE);
-                    binding.txtStatus.setText("Ngirim artos...");
+                    binding.txtStatus.setText(R.string.sending_coin);
                     isSending = true;
                     if(binding.offlineSigning.isChecked()) {
                         NuxCoin.sendCoin(dompet, binding.txtAlamat.getText().toString(), binding.txtValue.getText().toString(),
@@ -286,7 +284,7 @@ public class SendMoneyActivity extends AppCompatActivity implements View.OnClick
                                             } else {
                                                 isSending = false;
                                                 binding.layoutStatus.setVisibility(View.GONE);
-                                                Utils.showToast("Ngirim artos gagal!!", SendMoneyActivity.this);
+                                                Utils.showToast(R.string.sending_coin_failed, SendMoneyActivity.this);
                                             }
                                         } catch (Exception e) {
                                             isSending = false;
@@ -315,10 +313,10 @@ public class SendMoneyActivity extends AppCompatActivity implements View.OnClick
                                     binding.layoutStatus.setVisibility(View.GONE);
                                     try{
                                         if(jsonObject.has("SENDCOIN") && jsonObject.getString("SENDCOIN").equals("SUCCESS")){
-                                            Utils.showToast("Ngirim artos sukses!!\nTungguan weh, engke aya nu mere nyaho", SendMoneyActivity.this);
+                                            Utils.showToast(R.string.sending_coin_success, SendMoneyActivity.this);
                                             finish();
                                         }else{
-                                            Utils.showToast("Gagal ngirim artosna!!", SendMoneyActivity.this);
+                                            Utils.showToast(R.string.sending_coin_failed, SendMoneyActivity.this);
                                         }
                                     }catch (Exception e){
                                         Utils.showToast(e.getMessage(), SendMoneyActivity.this);
@@ -359,7 +357,7 @@ public class SendMoneyActivity extends AppCompatActivity implements View.OnClick
                             binding.txtPK.setText(json.getString("public_key"));
                         }catch (Exception e){
                             e.printStackTrace();
-                            Utils.showToast("Unknown QRCode",this);
+                            Utils.showToast(R.string.unknown_qrcode,this);
                         }
                     }else if(dt.startsWith("APK:")){
                         dt = dt.substring(4);
@@ -381,7 +379,7 @@ public class SendMoneyActivity extends AppCompatActivity implements View.OnClick
                             binding.txtPK.setText(json.getString("public_key"));
                         }catch (Exception e){
                             e.printStackTrace();
-                            Utils.showToast("Unknown QRCode",this);
+                            Utils.showToast(R.string.unknown_qrcode,this);
                         }
                     }else if(dt.startsWith("APK:")){
                         dt = dt.substring(4);
@@ -402,10 +400,10 @@ public class SendMoneyActivity extends AppCompatActivity implements View.OnClick
                             binding.layoutStatus.setVisibility(View.GONE);
                             try{
                                 if(jsonObject.has("SENDCOIN") && jsonObject.getString("SENDCOIN").equals("SUCCESS")){
-                                    Utils.showToast("Ngirim artos sukses!!\nTungguan weh, engke aya nu mere nyaho", SendMoneyActivity.this);
+                                    Utils.showToast(R.string.sending_coin_success, SendMoneyActivity.this);
                                     finish();
                                 }else{
-                                    Utils.showToast("Gagal ngirim artosna!!", SendMoneyActivity.this);
+                                    Utils.showToast(R.string.sending_coin_failed, SendMoneyActivity.this);
                                 }
                             }catch (Exception e){
                                 Utils.showToast(e.getMessage(), SendMoneyActivity.this);
@@ -424,7 +422,7 @@ public class SendMoneyActivity extends AppCompatActivity implements View.OnClick
                         }
                     });
                 else
-                    Utils.showToast("Gagal nanda tangan oppline\nCoba online",this);
+                    Utils.showToast(R.string.failed_signing_offline,this);
             }
 
         }

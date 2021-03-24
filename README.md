@@ -1,9 +1,10 @@
-# Sunda Coin Wallet
-
-![Kanjut Kundang](app/src/main/res/drawable/nuxcoin.png "Kanjut Kundang")
-
-## Android CryptoCurrency Wallet for NXT Based
+# Android CryptoCurrency Wallet for NXT Based
 
 created By iBNuX
 
-Wallet: SND-TNHJ-LAC5-7DGL-HR7Y5
+Wallet: NXT-TNHJ-LAC5-7DGL-HR7Y5
+
+
+# Cryptocurrency Source
+
+https://github.com/ibnux/coin/

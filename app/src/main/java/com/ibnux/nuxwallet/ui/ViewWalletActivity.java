@@ -10,23 +10,19 @@ package com.ibnux.nuxwallet.ui;
  \******************************************************************************/
 
 import android.app.AlertDialog;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
+import android.content.*;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.androidnetworking.common.Priority;
 import com.google.gson.Gson;
 import com.ibnux.nuxwallet.Aplikasi;
@@ -41,7 +37,6 @@ import com.ibnux.nuxwallet.databinding.ActivityViewWalletBinding;
 import com.ibnux.nuxwallet.utils.JsonCallback;
 import com.ibnux.nuxwallet.utils.NuxCoin;
 import com.ibnux.nuxwallet.utils.Utils;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -57,20 +52,20 @@ public class ViewWalletActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         binding = ActivityViewWalletBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        setTitle("SUNDA COIN");
+        setTitle(R.string.app_name);
         Intent intent = getIntent();
         if(!intent.hasExtra("alamat")) finish();
         alamat = intent.getStringExtra("alamat");
         binding.txtWallet.setText(alamat);
         dompet = ObjectBox.getDompet(alamat);
         if(dompet==null) {
-            binding.txtBalance.setText("Check artos...");
+            binding.txtBalance.setText(R.string.getting_balance);
             NuxCoin.getAccount(alamat, Priority.HIGH, new JsonCallback() {
                 @Override
                 public void onJsonCallback(JSONObject jsonObject) {
                     try{
                         if(jsonObject.has("errorCode") && jsonObject.getInt("errorCode")==5){
-                            binding.txtBalance.setText("DOmpet can didaftarkeun, kudu aya saldo");
+                            binding.txtBalance.setText(R.string.account_not_registered);
                         }else if(jsonObject.has("errorDescription")){
                             binding.txtBalance.setText(jsonObject.getString("errorDescription"));
                         }else if(jsonObject.has("balanceNQT")){
@@ -83,13 +78,13 @@ public class ViewWalletActivity extends AppCompatActivity implements View.OnClic
                         }
                         uiProcess();
                     }catch (Exception e){
-                        binding.txtBalance.setText("Dompet can di daftarkeun, kudu aya saldo");
+                        binding.txtBalance.setText(R.string.account_not_registered);
                     }
                 }
 
                 @Override
                 public void onErrorCallback(int errorCode, String errorMessage) {
-                    Utils.showToast("Failed to connect to server\n"+errorMessage,ViewWalletActivity.this);
+                    Utils.showToast(getString(R.string.failed_to_connect_to_server,errorMessage),ViewWalletActivity.this);
                 }
             });
         }else {
@@ -118,13 +113,13 @@ public class ViewWalletActivity extends AppCompatActivity implements View.OnClic
 
     public void uiProcess(){
         if(dompet!=null && dompet.isMe){
-            binding.btnBarcode.setText("Barcode");
+            binding.btnBarcode.setText(R.string.qrcode);
             binding.card.setCardBackgroundColor(ContextCompat.getColor(Aplikasi.app, R.color.blue_800));
         }else{
             if(dompet!=null && dompet.id>0){
                 binding.btnBarcode.setVisibility(View.GONE);
             }else{
-                binding.btnBarcode.setText("Save");
+                binding.btnBarcode.setText(R.string.save);
             }
             binding.card.setCardBackgroundColor(ContextCompat.getColor(Aplikasi.app,R.color.green_800));
         }
@@ -135,14 +130,14 @@ public class ViewWalletActivity extends AppCompatActivity implements View.OnClic
             if(dompet.nama!=null)
                 binding.txtWalletName.setText(dompet.nama);
             else if(dompet.id>0)
-                binding.txtWalletName.setText("Nu boga dompet saha?");
+                binding.txtWalletName.setText(R.string.ask_wallet_name);
             else
                 binding.txtWalletName.setText("");
         }
         if(dompet!=null && dompet.catatan!=null)
             binding.txtWalletNote.setText(dompet.catatan);
         else if(dompet.id>0)
-            binding.txtWalletNote.setText("bere catetan?");
+            binding.txtWalletNote.setText(R.string.ask_wallet_note);
         else
             binding.txtWalletNote.setText("");
 
@@ -162,26 +157,26 @@ public class ViewWalletActivity extends AppCompatActivity implements View.OnClic
             Transaksi tx = adapter.getData(position);
             new androidx.appcompat.app.AlertDialog.Builder(ViewWalletActivity.this)
                     .setIcon(R.mipmap.ic_launcher)
-                    .setMessage("Delete it?")
+                    .setMessage(R.string.ask_delete)
                     .setOnCancelListener(new DialogInterface.OnCancelListener() {
                         @Override
                         public void onCancel(DialogInterface dialog) {
                             adapter.reload();
                         }
                     })
-                    .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             new androidx.appcompat.app.AlertDialog.Builder(ViewWalletActivity.this)
                                     .setIcon(R.mipmap.ic_launcher)
-                                    .setTitle("Are You sure?")
-                                    .setPositiveButton("Sure", new DialogInterface.OnClickListener() {
+                                    .setTitle(R.string.ask_are_you_sure)
+                                    .setPositiveButton(R.string.sure, new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             ObjectBox.getTransaksi().query().equal(Transaksi_.transaction,tx.transaction).build().remove();
                                             adapter.reload();
                                         }
                                     })
-                                    .setNegativeButton("Nope", new DialogInterface.OnClickListener() {
+                                    .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             adapter.reload();
@@ -190,7 +185,7 @@ public class ViewWalletActivity extends AppCompatActivity implements View.OnClic
                                     .show();
                         }
                     })
-                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             adapter.reload();
@@ -210,34 +205,34 @@ public class ViewWalletActivity extends AppCompatActivity implements View.OnClic
             }else{
                 //Ask Name
                 AlertDialog.Builder builder = new AlertDialog.Builder(ViewWalletActivity.this);
-                builder.setTitle("Ngaran Dompetna?");
+                builder.setTitle(R.string.ask_wallet_name);
                 final EditText input = new EditText(ViewWalletActivity.this);
                 input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_WORDS);
                 input.setGravity(Gravity.CENTER_HORIZONTAL);
-                input.setHint("Optional");
+                input.setHint(R.string.optional);
                 input.setText(dompet.nama);
                 input.setSelectAllOnFocus(true);
                 builder.setView(input);
-                builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dompet.nama = input.getText().toString();
                         if (ObjectBox.addDompet(dompet) > 0) {
-                            Utils.showToast("Wallet Saved", ViewWalletActivity.this);
+                            Utils.showToast(R.string.wallet_saved, ViewWalletActivity.this);
                             uiProcess();
                         } else {
-                            Utils.showToast("Wallet not Saved", ViewWalletActivity.this);
+                            Utils.showToast(R.string.wallet_not_saved, ViewWalletActivity.this);
                         }
                     }
                 });
-                builder.setNegativeButton("No Name", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(R.string.wallet_no_name, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (ObjectBox.addDompet(dompet) > 0) {
-                            Utils.showToast("Wallet Saved", ViewWalletActivity.this);
+                            Utils.showToast(R.string.wallet_saved, ViewWalletActivity.this);
                             uiProcess();
                         } else {
-                            Utils.showToast("Wallet not Saved", ViewWalletActivity.this);
+                            Utils.showToast(R.string.wallet_not_saved, ViewWalletActivity.this);
                         }
                     }
                 });
@@ -247,14 +242,14 @@ public class ViewWalletActivity extends AppCompatActivity implements View.OnClic
             ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
             ClipData clip = ClipData.newPlainText(getString(R.string.app_name), alamat);
             clipboard.setPrimaryClip(clip);
-            Utils.showToast(alamat+" copied!",this);
+            Utils.showToast(getString(R.string.a_copied,alamat),this);
         }else if(v==binding.btnSend){
             Intent i = new Intent(this, SendMoneyActivity.class);
             if(dompet.isMe) {
                 if(dompet.saldo>0)
                     i.putExtra("from", alamat);
                 else {
-                    Utils.showToast("Duitna kurang", this);
+                    Utils.showToast(R.string.insufficient_funds, this);
                     return;
                 }
             }else {
@@ -267,54 +262,54 @@ public class ViewWalletActivity extends AppCompatActivity implements View.OnClic
             if(dompet.id==0) return;
             //Ask Name
             AlertDialog.Builder builder = new AlertDialog.Builder(ViewWalletActivity.this);
-            builder.setTitle("Bere catetan?");
+            builder.setTitle(R.string.ask_wallet_note);
             final EditText input = new EditText(ViewWalletActivity.this);
             input.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_MULTI_LINE);
             input.setGravity(Gravity.CENTER_HORIZONTAL);
-            input.setHint("Catetanna naon");
+            input.setHint(R.string.ask_wallet_note);
             input.setText(dompet.catatan);
             input.setLines(2);
             input.setSelectAllOnFocus(true);
             builder.setView(input);
-            builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+            builder.setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dompet.catatan = input.getText().toString();
                     if(ObjectBox.addDompet(dompet)>0){
-                        Utils.showToast("Wallet Saved",ViewWalletActivity.this);
+                        Utils.showToast(R.string.wallet_saved,ViewWalletActivity.this);
                         uiProcess();
                     }else{
-                        Utils.showToast("Wallet not Saved",ViewWalletActivity.this);
+                        Utils.showToast(R.string.wallet_not_saved,ViewWalletActivity.this);
                     }
                 }
             });
-            builder.setNegativeButton("Cancel",null);
+            builder.setNegativeButton(R.string.cancel,null);
             builder.show();
         }else if(v==binding.txtWalletName){
             if(dompet.id==0) return;
             //Ask Name
             AlertDialog.Builder builder = new AlertDialog.Builder(ViewWalletActivity.this);
-            builder.setTitle("Wallet Name?");
+            builder.setTitle(R.string.ask_wallet_name);
             final EditText input = new EditText(ViewWalletActivity.this);
             input.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_CAP_WORDS);
             input.setGravity(Gravity.CENTER_HORIZONTAL);
-            input.setHint("Wallet function");
+            input.setHint(R.string.ask_wallet_note);
             builder.setView(input);
             input.setText(dompet.nama);
             input.setSelectAllOnFocus(true);
-            builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+            builder.setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dompet.nama = input.getText().toString();
                     if(ObjectBox.addDompet(dompet)>0){
-                        Utils.showToast("Wallet Saved",ViewWalletActivity.this);
+                        Utils.showToast(R.string.wallet_saved,ViewWalletActivity.this);
                         uiProcess();
                     }else{
-                        Utils.showToast("Wallet not Saved",ViewWalletActivity.this);
+                        Utils.showToast(R.string.wallet_not_saved,ViewWalletActivity.this);
                     }
                 }
             });
-            builder.setNegativeButton("Cancel",null);
+            builder.setNegativeButton(R.string.cancel,null);
             builder.show();
         }
     }
@@ -346,25 +341,25 @@ public class ViewWalletActivity extends AppCompatActivity implements View.OnClic
                             Intent intent = new Intent(ViewWalletActivity.this, ViewWalletActivity.class);
                             intent.putExtra("alamat",alamat);
                             intent.putExtra("transaction",tx.transaction);
-                            if((tx.recipientRS.equals(alamat))) {
-                                Utils.sendNotification(
-                                        ObjectBox.getNamaDompet(tx.senderRS) + " ngirim duit",
-                                        "Meunang " + tx.amountNQT + " SND ti " + ObjectBox.getNamaDompet(tx.recipientRS),
-                                        intent,
-                                        "transaction",
-                                        "Transaction"
-
-                                );
-                            }else{
-                                Utils.sendNotification(
-                                        "You sent a coin from "+ObjectBox.getNamaDompet(tx.senderRS),
-                                        tx.amountNQT + " SND ka " + ObjectBox.getNamaDompet(tx.recipientRS)+ " geus kakirim",
-                                        intent,
-                                        "transaction",
-                                        "Transaction"
-
-                                );
-                            }
+//                            if((tx.recipientRS.equals(alamat))) {
+//                                Utils.sendNotification(
+//                                        getString(R.string.service_notification_received_title,ObjectBox.getNamaDompet(tx.senderRS)),
+//                                        getString(R.string.service_notification_received_message, tx.amountNQT, ObjectBox.getNamaDompet(tx.recipientRS)),
+//                                        intent,
+//                                        "transaction",
+//                                        "Transaction"
+//
+//                                );
+//                            }else{
+//                                Utils.sendNotification(
+//                                        getString(R.string.service_notification_sending_title,ObjectBox.getNamaDompet(tx.senderRS)),
+//                                        getString(R.string.service_notification_sending_message,tx.amountNQT , ObjectBox.getNamaDompet(tx.recipientRS)),
+//                                        intent,
+//                                        "transaction",
+//                                        "Transaction"
+//
+//                                );
+//                            }
                             ObjectBox.addTransaksi(tx);
                         }else{
                             ada++;
@@ -385,7 +380,7 @@ public class ViewWalletActivity extends AppCompatActivity implements View.OnClic
             }
         }catch (Exception e){
             e.printStackTrace();
-            Utils.showToast("Failed to parsing data\n"+e.getMessage(),ViewWalletActivity.this);
+            Utils.showToast(getString(R.string.failed_parsing_data_from_server,e.getMessage()),ViewWalletActivity.this);
             binding.progressBar.setVisibility(View.GONE);
         }
     }
@@ -416,6 +411,55 @@ public class ViewWalletActivity extends AppCompatActivity implements View.OnClic
             Intent intent = new Intent(this, ViewWalletActivity.class);
             intent.putExtra("alamat", alamat);
             startActivity(intent);
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.wallet_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_nav_referral:
+                if(dompet.isMe) {
+                    new androidx.appcompat.app.AlertDialog.Builder(ViewWalletActivity.this)
+                            .setIcon(R.mipmap.ic_launcher)
+                            .setTitle(R.string.dialog_share_referral_title)
+                            .setMessage(
+                                    getString(
+                                            R.string.dialog_share_referral_body,
+                                            getString(
+                                                    R.string.dialog_share_referral_url,
+                                                    dompet.alamat
+                                            )
+                                    )
+                            )
+                            .setPositiveButton(R.string.share, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+                                    intent.setType("text/plain");
+                                    intent.putExtra(android.content.Intent.EXTRA_SUBJECT, getString(R.string.share_subject));
+                                    intent.putExtra(android.content.Intent.EXTRA_TEXT, getString(
+                                            R.string.dialog_share_referral_text,
+                                            getString(
+                                                    R.string.dialog_share_referral_url,
+                                                    dompet.alamat
+                                            )
+                                    ));
+                                    startActivity(Intent.createChooser(intent, getString(R.string.share_using)));
+                                }
+                            })
+                            .setNegativeButton(R.string.cancel, null)
+                            .show();
+                }else{
+                    Utils.showToast(R.string.dialog_share_warning,this);
+                }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }
