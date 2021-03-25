@@ -27,7 +27,7 @@
     <string name="first_wallet_address" translatable="false">-TNHJ-LAC5-7DGL-HR7Y5</string>
     <string name="first_wallet_name" translatable="false">iBNuX</string>
     <string name="first_wallet_public_key" translatable="false">0f04b0abc5f2d2518cc7f56ef5225968901bbddadf0531a9c13645457d477860</string>
-    <string name="first_wallet_note">Sang pembuat dompet ini</string>
+    <string name="first_wallet_note">Menteri Keuangan Sunda Club</string>
 
     <string name="service_notification_title">Next update at %1$s</string>
     <string name="service_notification_message">Waiting transaction every %1$d minute(s)</string>

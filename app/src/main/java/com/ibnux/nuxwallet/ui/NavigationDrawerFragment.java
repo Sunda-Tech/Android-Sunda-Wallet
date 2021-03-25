@@ -115,7 +115,9 @@ public class NavigationDrawerFragment extends Fragment implements NavCallback {
                 for(int n=0;n<jml;n++){
                     Navigasi nav = new Navigasi();
                     nav.title = json.get(n).getAsJsonObject().get("title").getAsString();
-                    nav.description = json.get(n).getAsJsonObject().get("description").getAsString();
+                    if( json.get(n).getAsJsonObject().has("description")) {
+                        nav.description = json.get(n).getAsJsonObject().get("description").getAsString();
+                    }
                     nav.url = json.get(n).getAsJsonObject().get("url").getAsString();
                     nav.openAt = json.get(n).getAsJsonObject().get("openAt").getAsString();
                     if( json.get(n).getAsJsonObject().has("openAt")) {
